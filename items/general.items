@@ -1,0 +1,10 @@
+Switch  AllOff  "Alles uit"
+Number BelMode "Bel Modus"
+Switch DriesOnderweg "Dries"
+String GarageStatus "Garage Deur Status"
+Switch Test1
+Switch Test2
+Switch MobielDries "Mobiel Dries"
+Group GroupAlert
+String HubActivity
+String BelAlert

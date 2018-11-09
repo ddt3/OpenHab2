@@ -1,0 +1,10 @@
+rule "Dash button pressed"
+    when
+        Channel "amazondashbutton:dashbutton:50-f5-da-b9-b6-5e:press" triggered
+    then
+	if( OverloopVoorScene.state > 0 ) {
+		sendCommand(OverloopVoorScene, 0)
+	} else {
+		sendCommand(OverloopVoorScene, 1)
+	}
+end

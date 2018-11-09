@@ -1,0 +1,86 @@
+// Tafel Schakelaar
+rule "Tafel Schakelaar"
+when
+        Item TafelZWScene changed
+then
+	logInfo("zwave-test", "Detected state is: "+TafelZWScene.state)
+	switch(TafelZWScene.state) {
+		case 1.0 : { 
+			if( Hal.state == ON ) {
+				sendCommand(Hal, OFF)
+			} else {
+				sendCommand(Hal, ON)
+			}
+		}
+		case 1.1 : { 
+			if( BuitenC.state == ON ) {
+				sendCommand(BuitenS, OFF)
+			} else {
+				sendCommand(BuitenS, ON)
+			}
+		}
+		case 13 : { }
+		case 14 : { }
+		case 15 : { }
+		case 16 : { }
+		case 2.0 : { 
+			if( FrontHallDimmer.state > 0 ) {
+				sendCommand(FrontHallDimmer, 0)
+			} else {
+				sendCommand(FrontHallDimmer, 50)
+			}
+		}
+		case 22 : { 
+			if( KeukenAanScene.state > 0 ) {
+				sendCommand(KeukenAanScene, 0)
+			} else {
+				sendCommand(KeukenAanScene, 1)
+			}
+
+		}
+		case 2.2 : { 
+			sendCommand(AllOff, ON)
+		}
+		case 24 : { }
+		case 25 : { }
+		case 26 : { }
+		case 5.0 : { 
+			if( TafelScene.state > 0 ) {
+				sendCommand(TafelScene, 0)
+			} else {
+				sendCommand(TafelScene, 1)
+			}
+		}
+		case 32 : { }
+		case 5.2 : { 
+			if( TafelScene.state != 2 ) {
+				sendCommand(TafelScene, 2)
+			} else {
+				sendCommand(TafelScene, 1)
+			}
+		}
+		case 34 : { }
+		case 35 : { }
+		case 36 : { }
+		case 6.0 : { 
+		        if( KamerScene.state > 0 ) {
+				sendCommand(KamerScene, 0)
+			} else {
+				sendCommand(KamerScene, 1)
+			}
+		}
+		case 42 : { }
+		case 6.2 : { 
+			if( KamerScene.state != 2 ) {
+				sendCommand(KamerScene, 2)
+			} else {
+				sendCommand(KamerScene, 1)
+			}
+		}
+		case 44 : { }
+		case 45 : { }
+		case 46 : { }
+		default : {  }
+        }
+
+end

@@ -1,0 +1,115 @@
+//-----------------------Squeezebox-----------------------------------------
+rule "Harmony Squeezebox"
+when
+Item SBSim received command
+then
+        if (receivedCommand == ON) {
+		//Squeezebox		
+		logInfo("Harmony","++Muziek--")
+		sendCommand(HubActivity,"Muziek Luisteren")
+		
+	} else {
+		//Power Off
+		logInfo("Harmony","++OFF--")
+		sendCommand(HubActivity,"PowerOff")
+	}
+end
+
+//-----------------------Television-----------------------------------------
+rule "Harmony Television"
+when
+Item TVSim received command
+then
+	if (receivedCommand == ON) {
+		//Television 
+		logInfo("Harmony","++TV--")
+		sendCommand(HubActivity,"TV Kijken")
+	} else {
+		//Power Off
+		logInfo("Harmony","++OFF--")
+		sendCommand(HubActivity,"PowerOff")
+	}
+end
+
+//-----------------------Playstation-----------------------------------------
+rule "Harmony Playstation"
+when
+Item PSSim received command
+then
+	if (receivedCommand == ON) {
+		//Playstation
+		logInfo("Harmony","++PS3--")
+		sendCommand(HubActivity,"PS3 Spelen")
+	} else {
+		//Power Off
+		logInfo("Harmony","++OFF--")
+		sendCommand(HubActivity,"PowerOff")
+	}
+end
+//-----------------------Media player-----------------------------------------
+rule "Harmony Media"
+when
+Item RPSim received command 
+
+then
+	if (receivedCommand == ON) {
+		//Media Player
+		logInfo("Harmony","++Media--")
+		sendCommand(HubActivity,"Media Kijken")
+		postUpdate(SBSim,OFF)
+		postUpdate(TVSim,OFF)
+		postUpdate(PSSim,OFF)
+	} else {
+		//Power Off
+		logInfo("Harmony","++OFF--")
+		sendCommand(HubActivity,"PowerOff")
+		postUpdate(SBSim,OFF)
+		postUpdate(TVSim,OFF)
+		postUpdate(PSSim,OFF)
+		postUpdate(RPSim,OFF)
+	}
+end
+//-----------------------Synchronize with remotesr-----------------------------------------
+rule "Harmony changed"
+when
+Item HubActivity changed
+then
+	logInfo("Harmony","New state {}",  HubActivity.state)
+	switch HubActivity.state.toString {
+		case 'Muziek Luisteren' : {
+			logInfo("Harmony","--Muziek--")
+			postUpdate(SBSim,ON)
+			postUpdate(TVSim,OFF)
+			postUpdate(PSSim,OFF)
+			postUpdate(RPSim,OFF)
+		}
+		case 'TV Kijken' : {
+			logInfo("Harmony","--TV--")
+			postUpdate(SBSim,OFF)
+			postUpdate(TVSim,ON)
+			postUpdate(PSSim,OFF)
+			postUpdate(RPSim,OFF)
+		}
+		case 'PS3 Spelen' : {
+			logInfo("Harmony","--PS3--")
+			postUpdate(SBSim,OFF)
+			postUpdate(TVSim,OFF)
+			postUpdate(PSSim,ON)
+			postUpdate(RPSim,OFF)
+		}
+		case 'Media Kijken' : {
+			logInfo("Harmony","--Media--")
+			postUpdate(SBSim,OFF)
+			postUpdate(TVSim,OFF)
+			postUpdate(PSSim,OFF)
+			postUpdate(RPSim,ON)
+		}
+		case 'PowerOff' : {
+			logInfo("Harmony","--OFF--")
+			postUpdate(SBSim,OFF)
+			postUpdate(TVSim,OFF)
+			postUpdate(PSSim,OFF)
+			postUpdate(RPSim,OFF)
+		}
+	}
+end

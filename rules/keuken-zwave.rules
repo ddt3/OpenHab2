@@ -1,0 +1,65 @@
+// Tafel Schakelaar
+rule "Keuken Schakelaar"
+when
+        Item KeukenZWScene changed
+then
+      
+	switch(KeukenZWScene.state) {
+		case 11 : { }
+		case 12 : { 
+		}
+		case 13 : { }
+		case 14 : { }
+		case 15 : { }
+		case 16 : { }
+		case 21 : { 
+		}
+		case 22 : { 
+		}
+		case 23 : { 
+		}
+		case 24 : { }
+		case 25 : { }
+		case 26 : { }
+		case 5.0 : { 
+			if( KeukenAanScene.state > 0 ) {
+				sendCommand(KeukenAanScene, 0)
+			} else {
+				sendCommand(KeukenAanScene, 1)
+			}
+
+		}
+		case 32 : { }
+		case 5.2 : { 
+			if( KeukenAanScene.state != 2 ) {
+				sendCommand(KeukenAanScene, 2)
+			} else {
+				sendCommand(KeukenAanScene, 1)
+			}
+
+		}
+		case 34 : { }
+		case 35 : { }
+		case 36 : { }
+		case 6.0 : { 
+			if( CeilingDimmer.state > 0 ) {
+				sendCommand(CeilingDimmer, 0)
+			} else {
+				sendCommand(CeilingDimmer, 50)
+			}
+		}
+		case 42 : { }
+		case 6.2 : { 
+			if( CeilingDimmer.state != 100 ) {
+				sendCommand(CeilingDimmer, 100)
+			} else {
+				sendCommand(CeilingDimmer, 50)
+			}
+		}
+		case 44 : { }
+		case 45 : { }
+		case 46 : { }
+		default : { }
+        }
+
+end

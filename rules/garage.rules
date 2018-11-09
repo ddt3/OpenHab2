@@ -1,0 +1,33 @@
+rule "Deur open voor Dries"
+when
+    Item GarageSim changed from OFF to ON
+then
+	logInfo("Garage", "---DriesOnderweg state is: "+DriesOnderweg.state)
+	if ( DriesOnderweg.state == ON ) {
+	logInfo("Garage", "---Door will be opened ")
+		sendCommand(DriesOnderweg, OFF)
+		sendCommand(Garage, ON)
+		logInfo("Garage", "---Garage Door is OPEN")
+		sendCommand(GarageSim, OFF)
+	}
+	sendCommand(GarageSim, OFF)
+end
+
+rule "Garage Deur update"
+when 
+	Item GarageOpen received update or
+	Item GarageDicht received update
+then 
+	if (GarageOpen.state == ON && GarageDicht.state == OFF) {
+		postUpdate(GarageStatus, "Open")
+		sendCommand(TafelRaamC, "360,100,50")
+	}
+	if (GarageOpen.state == OFF && GarageDicht.state == OFF) {
+		postUpdate(GarageStatus, "Beweegt")
+		sendCommand(TafelRaamC, "360,100,50")
+	}
+	if (GarageOpen.state == OFF && GarageDicht.state == ON) {
+		postUpdate(GarageStatus, "Dicht")
+		sendCommand(TafelScene, TafelScene.state)
+	}
+end

@@ -1,0 +1,9 @@
+Number TafelZWScene	"TafelZWScene" {expire="1s, 0.0"}
+Number KeukenZWScene	"KeukenZWScene" {expire="1s, 0.0"}
+Number BedZWScene	"BedZWScene" {expire="1s, 0.0"}
+Number OverloopZWScene	"OverloopZWScene"
+Number TafelZWBattery	"TafelZWBattery"
+Number KeukenZWBattery	"KeukenZWBattery"
+Number OverloopZWBattery	"OverloopZWBattery"
+Number BedZWBattery	"BedZWBattery"
+

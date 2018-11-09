@@ -1,0 +1,16 @@
+rule "Kodi Movie"
+when
+        Item pi2mediatype received update 
+then
+	switch pi2mediatype.state {
+		case "episode",
+		case "movie" : {
+			sendCommand(SchemerLampC,"0,0,0")
+		}
+		default : {
+			sendCommand(KamerScene, KamerScene.state)
+		}
+	}
+
+end
+

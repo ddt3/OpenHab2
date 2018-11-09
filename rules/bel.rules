@@ -1,0 +1,24 @@
+rule "Aangebeld"
+when
+    Item BelKnop changed from OFF to ON
+then
+    switch(BelMode.state) {
+	case 1 : {
+	    sendNotification("dries.dokter@gmail.com", "Iemand drukte de bel")
+	    sendCommand(BelAlert, "LSELECT")
+	}
+	case 2 : {
+	    sendCommand(BelAlert, "LSELECT")
+	    sendNotification("dries.dokter@gmail.com", "Iemand drukte de bel")
+	    sendCommand(BelKnop, OFF)
+	    sendCommand(Bel, OFF)
+	    sendCommand(Bel, ON)
+ 	}
+	default : { 
+	    sendNotification("dries.dokter@gmail.com", "Iemand drukte de bel")
+	    sendCommand(BelKnop, OFF)
+	    sendCommand(Bel, OFF)
+	    sendCommand(Bel, ON)
+	}
+}
+end

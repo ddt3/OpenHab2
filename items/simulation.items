@@ -1,0 +1,13 @@
+Color 	TestSim "Dummy Light" ["Lighting"]
+Color   TafelColorSim	"Table lights" ["Lighting"]
+Color   KamerColorSim	"Family lights" ["Lighting"]
+Color   CounterColorSim	"Counter light" ["Lighting"]
+Dimmer   FrontHallDimmer "Corridor light" ["Lighting"]
+Dimmer  CeilingDimmer	"Ceiling light" ["Lighting"]
+Switch  SBSim	"Squeezebox" ["Lighting"]
+Switch  TVSim	"Television" ["Lighting"]
+Switch  PSSim	"Playstation" ["Lighting"]
+Switch  RPSim	"Media Player" ["Lighting"]
+Switch  WiiSim	"Wii" ["Lighting"]
+Switch  GarageSim "Door" ["Lighting"]
+

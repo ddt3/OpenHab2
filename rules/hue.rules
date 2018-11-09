@@ -1,0 +1,248 @@
+var Timer otimer
+var String CustomTafelColorSim = "120,20,20"
+var String CustomKamerColorSim = "120,20,20"
+var String CustomCounterolorSim = "120,20,20"
+var KamerScene1Doe=0
+var KamerScene2Doe=0
+
+//---------------------Tafel-----------------------------------
+rule "Tafel scene"
+when
+        Item TafelScene received command
+then
+        switch(receivedCommand) {
+                case 1 :  TafelColorSim.sendCommand("73,81,37") 
+                case 2 :  sendCommand(TafelColorSim, "84,47,100")
+                case 3 :  sendCommand(TafelColorSim, CustomTafelColorSim)
+                default : sendCommand(TafelColorSim, OFF) 
+        }
+end
+
+rule "Tafel kleuren"
+when
+	Item TafelColorSim received command
+then 
+	var TafelSceneTemp=3
+	if (receivedCommand.toString == "60,100,100" || receivedCommand.toString == "73,81,37" ) {
+		postUpdate(TafelColorSim, "73,81,37") 
+		TafelSceneTemp=1
+	} else if (receivedCommand.toString == "240,100,100" || receivedCommand.toString == "84,47,100") {
+		postUpdate(TafelColorSim, "84,47,100")
+		TafelSceneTemp=2
+	} else if (receivedCommand == OFF ) {
+		TafelSceneTemp=0
+	}
+
+	Thread::sleep(200)
+ 	postUpdate(TafelScene,TafelSceneTemp)
+	if (TafelSceneTemp == 3)
+	{
+		CustomTafelColorSim=TafelColorSim.state.toString
+	}
+	sendCommand(TafelKamerC,TafelColorSim.state)
+	Thread::sleep(100)
+	sendCommand(TafelRaamC,TafelColorSim.state)
+end
+
+
+//---------------------Kamer-----------------------------------
+rule "Kamer scene"
+when
+        Item KamerScene received command
+then
+        switch(receivedCommand) {
+                case 1 :  { 
+			KamerScene1Doe=1
+			sendCommand(KamerColorSim, "89,100,100")
+		}
+                case 2 :  { 
+			KamerScene2Doe=1
+			sendCommand(KamerColorSim, "89,100,100")
+		}
+                case 3 :  { 
+			sendCommand(KamerColorSim, CustomKamerColorSim)
+		}
+                default : {
+		
+			sendCommand(KamerColorSim, OFF)
+		}
+        }
+end
+
+rule "Kamer kleuren"
+when
+	Item KamerColorSim received command
+then 
+	var String KamerColorSimZL = "120,20,20"
+	var String KamerColorSimSL = "120,20,20"
+	var String KamerColorSimLC = "120,20,20"
+	var KamerSceneTemp=3
+	if (receivedCommand.toString == "60,100,100" || (KamerScene1Doe==1) ) {
+		KamerScene1Doe=0
+		KamerSceneTemp=1
+		postUpdate(KamerColorSim, "70,100,100")
+		KamerColorSimZL = "0,0,50"
+		KamerColorSimSL = "70,100,100"
+		KamerColorSimLC = "89,100,100"
+	} else if (receivedCommand.toString == "240,100,100" || KamerScene2Doe == 1 ) {
+		KamerScene2Doe=0
+		KamerSceneTemp=2
+		postUpdate(KamerColorSim, "70,100,100") 
+		KamerColorSimZL = "0,0,50"
+		KamerColorSimSL = "OFF"
+		KamerColorSimLC = "89,100,100"
+	} else if (receivedCommand == OFF ) {
+		KamerSceneTemp=0
+		KamerColorSimZL = "OFF"
+                KamerColorSimSL = "OFF"
+                KamerColorSimLC = "OFF"
+
+	}
+	Thread::sleep(200)
+ 	postUpdate(KamerScene,KamerSceneTemp)
+	if (KamerSceneTemp == 3)
+	{
+		CustomKamerColorSim=KamerColorSim.state.toString
+		KamerColorSimZL = KamerColorSim.state.toString
+		KamerColorSimSL = KamerColorSim.state.toString
+		KamerColorSimLC = KamerColorSim.state.toString
+		
+	}
+	sendCommand(ZonneLampC, KamerColorSimZL)
+	Thread::sleep(100)
+	sendCommand(SchemerLampC, KamerColorSimSL)
+	Thread::sleep(100)
+	sendCommand(LivingColorC, KamerColorSimLC)
+end
+
+//---------------------Aanrecht-----------------------------------
+rule "Keuken Aanrecht Scene"
+when
+        Item KeukenAanScene received command
+then
+        switch(receivedCommand) {
+                case 1 :  {
+                        sendCommand(CounterColorSim, "40,86,100")
+                }
+                case 2 :  {
+                        sendCommand(CounterColorSim, "225,24,100")
+                }
+                case 3 :  {
+                        sendCommand(CounterColorSim, CustomCounterolorSim)
+                }
+                default : {
+                        sendCommand(CounterColorSim, OFF)
+                }
+        }
+end
+
+rule "Aanrecht kleuren"
+when
+	Item CounterColorSim received command
+then 
+	var CounterSceneTemp=3
+	if (receivedCommand.toString == "60,100,100" || receivedCommand.toString == "40,86,100" ) {
+		postUpdate(CounterColorSim, "40,86,100") 
+		CounterSceneTemp=1
+	} else if (receivedCommand.toString == "240,100,100" || receivedCommand.toString == "225,24,100") {
+		postUpdate(CounterColorSim, "225,24,100")
+		CounterSceneTemp=2
+	} else if (receivedCommand == OFF ) {
+		CounterSceneTemp=0
+	}
+
+	Thread::sleep(200)
+ 	postUpdate(KeukenAanScene,CounterSceneTemp)
+	if (CounterSceneTemp == 3)
+	{
+		CustomCounterolorSim=CounterColorSim.state.toString
+	}
+	KeukenstripC.sendCommand(CounterColorSim.state)
+end
+
+/*
+****KAN WG***
+//---------------------Overloop voor-----------------------------------
+rule "Overloop Voor scene"
+when
+        Item OverloopVoorScene received command
+then
+        if (receivedCommand != 3) {
+                if(otimer!==null) {
+                        otimer.cancel
+                        otimer = null
+                }
+        }
+        switch(receivedCommand) {
+        case 1 :  {
+                sendCommand(OverloopVoorC, "0,0,50")
+        }
+        case 2 :  {
+                sendCommand(OverloopVoorC, "0,0,100")
+        }
+        case 3: {
+                sendCommand(OverloopVoorC, "0,0,20")
+        }
+        default : {
+                sendCommand(OverloopVoorC, OFF)
+        }
+}
+
+end
+*/
+ 
+rule "Overloop Achter scene"
+when
+        Item OverloopAchterScene received command
+then
+        if(otimer!==null) {
+                otimer.cancel
+                otimer = null
+        }
+        switch(receivedCommand) {
+        case 1 :  {
+                sendCommand(OverloopAchterC, "0,0,50")
+        }
+        case 2 :  {
+                sendCommand(OverloopAchterC, "0,0,100")
+        }
+        case 3: {
+                sendCommand(OverloopVoorScene,3)
+                sendCommand(OverloopAchterC, "0,0,10")
+                otimer = createTimer(now.plusSeconds(30)) [|
+                        sendCommand(OverloopVoorScene,0)
+                        sendCommand(OverloopAchterScene,0)
+                ]
+        }
+        default : {
+                sendCommand(OverloopAchterC, OFF)
+        }
+}
+
+end
+rule "Bed scene"
+when
+        Item BedScene received command
+then
+        switch(receivedCommand) {
+                case 1 :  { sendCommand(BedLampC, "0,0,33")}
+                case 2 :  { sendCommand(BedLampC, "0,0,66")}
+                case 3 :  { sendCommand(BedLampC, "0,0,100")}
+                default : { sendCommand(BedLampC, OFF) }
+        }
+end
+
+rule "Tafel lamp uit aan"
+when
+        Item SchemerLampC received update
+then
+        if (SchemerLampC == "81,56,100" ) {
+		switch(KamerScene) {
+			case 1 :  { sendCommand(KamerScene, 1) }
+			case 2 :  { sendCommand(KamerScene, 2) }
+			default : { sendCommand(KamerScene, 0) }
+			}
+	}
+
+end
+
