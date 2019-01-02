@@ -24,17 +24,17 @@ then
 		case 15 : { }
 		case 16 : { }
 		case 2.0 : { 
-			if( FrontHallDimmer.state > 0 ) {
-				sendCommand(FrontHallDimmer, 0)
+			if( FrontHallSwitch.state == ON ) {
+				sendCommand(FrontHallSwitch, OFF)
 			} else {
-				sendCommand(FrontHallDimmer, 50)
+				sendCommand(FrontHallSwitch, ON)
 			}
 		}
 		case 22 : { 
-			if( KeukenAanScene.state > 0 ) {
-				sendCommand(KeukenAanScene, 0)
+			if( KeukenAchterScene.state > 0 ) {
+				sendCommand(KeukenAchterScene, 0)
 			} else {
-				sendCommand(KeukenAanScene, 1)
+				sendCommand(KeukenAchterScene, 1)
 			}
 
 		}

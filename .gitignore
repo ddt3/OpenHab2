@@ -1,1 +1,8 @@
-*.cfg
+.vscode/settings.json
+services/homekit.cfg
+services/jdbc.cfg
+services/mqtt.cfg
+services/voicerss.cfg
+services/mqtt.cfg
+services/weather.cfg
+services/xbmc.cfg

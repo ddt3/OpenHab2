@@ -26,7 +26,7 @@ then
 	if (command.contains("downstairs")) {
 	    sendCommand(TafelScene, newState)
 	    sendCommand(KamerScene, newState)
-	    sendCommand(KeukenAanScene, newState)
+	    sendCommand(KeukenAchterScene, newState)
 	    if (command.contains("everything") && (newState==0)) {
 		sendCommand(HubActivity,"PowerOff")
 	    }
@@ -35,7 +35,7 @@ then
 	    sendCommand(TafelScene, newState)
 	} 
         if (command.contains("kitchen") ) {
-	    sendCommand(KeukenAanScene, newState)
+	    sendCommand(KeukenAchterScene, newState)
 	}
 	if (command.contains("stairs")) {
 	    sendCommand(OverloopVoorScene, newState)

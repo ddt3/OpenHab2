@@ -1,64 +1,117 @@
-// Tafel Schakelaar
-rule "Keuken Schakelaar"
+// Keuken Schakelaar
+rule "Keuken Achter Schakelaar"
 when
-        Item KeukenZWScene changed
+        Item KeukenAchterZWScene changed
 then
       
-	switch(KeukenZWScene.state) {
-		case 11 : { }
-		case 12 : { 
-		}
-		case 13 : { }
-		case 14 : { }
-		case 15 : { }
-		case 16 : { }
-		case 21 : { 
-		}
-		case 22 : { 
-		}
-		case 23 : { 
-		}
-		case 24 : { }
-		case 25 : { }
-		case 26 : { }
-		case 5.0 : { 
-			if( KeukenAanScene.state > 0 ) {
-				sendCommand(KeukenAanScene, 0)
+	switch(KeukenAchterZWScene.state) {
+		case 1.0 : { /* LinksBoven Klik*/}
+		case 1.1 : { /*Lang los */}
+		case 1.2 : { /*Lang vast*/}
+		case 2.0 : { /* RechtsBoven Klik*/}
+		case 2.1 : { /*Lang los */}
+		case 2.2 : { /*Lang vast*/}
+		case 5.0 : { /* LinksOnder Klik*/
+			if( KeukenAchterScene.state > 0 ) {
+				sendCommand(KeukenAchterScene, 0)
 			} else {
-				sendCommand(KeukenAanScene, 1)
+				sendCommand(KeukenAchterScene, 1)
 			}
 
 		}
-		case 32 : { }
-		case 5.2 : { 
-			if( KeukenAanScene.state != 2 ) {
-				sendCommand(KeukenAanScene, 2)
+		case 5.1 : { /*Lang los */}
+		case 5.2 : { /*Lang vast*/
+			if( KeukenAchterScene.state != 2 ) {
+				sendCommand(KeukenAchterScene, 2)
 			} else {
-				sendCommand(KeukenAanScene, 1)
+				sendCommand(KeukenAchterScene, 1)
 			}
 
 		}
-		case 34 : { }
-		case 35 : { }
-		case 36 : { }
-		case 6.0 : { 
+		case 6.0 : { /* Rechtsonder klik */
 			if( CeilingDimmer.state > 0 ) {
 				sendCommand(CeilingDimmer, 0)
 			} else {
 				sendCommand(CeilingDimmer, 50)
 			}
 		}
-		case 42 : { }
-		case 6.2 : { 
+		case 6.1 : { /*Lang los */}
+		case 6.2 : { /*Lang vast */
 			if( CeilingDimmer.state != 100 ) {
 				sendCommand(CeilingDimmer, 100)
 			} else {
 				sendCommand(CeilingDimmer, 50)
 			}
 		}
-		case 44 : { }
-		case 45 : { }
-		case 46 : { }
+		default : { }
+        }
+
+end
+// Keuken Schakelaar
+rule "Keuken Voor Schakelaar"
+when
+        Item KeukenVoorZWScene changed
+then
+      
+	switch(KeukenVoorZWScene.state) {
+		case 1.0 : { /* LinksBoven Klik*/
+			if( KeukenMiddenScene.state > 0 ) {
+				sendCommand(KeukenMiddenScene, 0)
+			} else {
+				sendCommand(KeukenMiddenScene, 1)
+			}		
+		}
+		case 1.1 : { /*Lang los */}
+		case 1.2 : { /*Lang vast*/
+			if( KeukenMiddenScene.state != 2 ) {
+				sendCommand(KeukenMiddenScene, 2)
+			} else {
+				sendCommand(KeukenMiddenScene, 1)
+			}		
+		}
+		case 2.0 : { /* RechtsBoven Klik*/ 
+			
+		}
+		case 2.1 : { /*Lang los */}
+		case 2.2 : { /*Lang vast*/
+			sendCommand(KeukenAchterScene, 0)
+			sendCommand(KeukenMiddenScene, 0)
+			sendCommand(KeukenVoorScene, 0)
+			sendCommand(CeilingDimmer, 0)
+
+		}
+		case 5.0 : { /* LinksOnder Klik*/
+			if( KeukenVoorScene.state > 0 ) {
+				sendCommand(KeukenVoorScene, 0)
+			} else {
+				sendCommand(KeukenVoorScene, 1)
+			}		
+		}
+		case 5.1 : { /*Lang los */}
+		case 5.2 : { /*Lang vast*/
+			if( KeukenVoorScene.state != 2 ) {
+				sendCommand(KeukenVoorScene, 2)
+			} else {
+				sendCommand(KeukenVoorScene, 1)
+			}		
+		}
+		case 6.0 : { /* Rechtsonder klik */
+			if( KeukenAchterScene.state > 0 ) {
+				sendCommand(KeukenAchterScene, 0)
+			} else {
+				sendCommand(KeukenAchterScene, 1)
+			}
+
+		}
+		case 6.1 : { /*Lang los */}
+		case 6.2 : { /*Lang vast */
+			
+			if( KeukenAchterScene.state != 2 ) {
+				sendCommand(KeukenAchterScene, 2)
+			} else {
+				sendCommand(KeukenAchterScene, 1)
+			}
+		}
 		default : { }
         }
 

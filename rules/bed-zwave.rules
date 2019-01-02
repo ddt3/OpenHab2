@@ -19,10 +19,10 @@ then
 		case 15 : { }
 		case 16 : { }
 		case 2.0 : { 
-                        if( FrontHallDimmer.state > 0 ) {
-                                sendCommand(FrontHallDimmer, 0)
+                        if( FrontHallSwitch.state ) {
+                                sendCommand(FrontHallSwitch, OFF)
                         } else {
-                                sendCommand(FrontHallDimmer, 50)
+                                sendCommand(FrontHallSwitch, ON)
                         }
                 }
 		case 22 : { 

@@ -1,4 +1,6 @@
-Color KeukenstripC "KeukenstripC"
+Color KeukenStripAchterC "KeukenStripAchterC"
+Color KeukenStripMiddenC "KeukenStripMiddenC"
+Color KeukenStripVoorC "KeukenStripVoorC"
 Color TafelKamerC "TafelKamerC"
 Color TafelRaamC "TafelRaamC"
 Color SchemerLampC "SchemerLampC"

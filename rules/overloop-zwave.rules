@@ -1,66 +1,52 @@
 // Overloop Schakelaar
 rule "Overloop Schakelaar"
 when
-        Item OverloopZWScene received update
+        Item OverloopZWScene changed
 then
       
 	switch(OverloopZWScene.state) {
-		case 11 : { }
-		case 12 : { 
+		case 1.0 : { /* LinksBoven Klik*/}
+		case 1.1 : { 
 		}
-		case 13 : { 
+		case 1.2 : { 
 			sendCommand(OverloopAchterScene, 3)
 		}
-		case 14 : { }
-		case 15 : { }
-		case 16 : { }
-		case 21 : { 
+		case 2.0 : { /* RechtsBoven Klik*/ 
 		}
-		case 22 : { 
+		case 2.1 : { 
 		}
-		case 23 : { 
+		case 2.2 : { 
 		}
-		case 24 : { }
-		case 25 : { }
-		case 26 : { }
-		case 31 : { 
-			if( OverloopVoorScene.state > 0 ) {
-				sendCommand(OverloopVoorScene, 0)
-			} else {
-				sendCommand(OverloopVoorScene, 1)
-			}
-		}
-		case 32 : { }
-		case 33 : { 
-			if( OverloopVoorScene.state != 2 ) {
-				sendCommand(OverloopVoorScene, 2)
-			} else {
-				sendCommand(OverloopVoorScene, 1)
-			}
-
-		}
-		case 34 : { }
-		case 35 : { }
-		case 36 : { }
-		case 41 : { 
+		
+		case 5.0: { 
 			if( OverloopAchterScene.state > 0 ) {
 				sendCommand(OverloopAchterScene, 0)
 			} else {
 				sendCommand(OverloopAchterScene, 1)
 			}
 		}
-		case 42 : { }
-		case 43 : { 
-		       if( OverloopAchterScene.state != 2 ) {
+		case 5.1 : { /* LinksOnder Klik*/}
+		case 5.2 : { 
+		    if( OverloopAchterScene.state != 2 ) {
 				sendCommand(OverloopAchterScene, 2)
 			} else {
 				sendCommand(OverloopAchterScene, 1)
+			}	
+		}
+		
+		case 6.0 : { /* Rechtsonder klik */
+			if( FrontHallSwitch.state == ON ) {
+				sendCommand(FrontHallSwitch, OFF)
+			} else {
+				sendCommand(FrontHallSwitch, ON)
 			}
+			
+		}
+		case 6.1 : { }
+		case 6.2 : { 
+
 
 		}
-		case 44 : { }
-		case 45 : { }
-		case 46 : { }
 		default : {  }
         }
 

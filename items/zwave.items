@@ -1,9 +1,11 @@
 Number TafelZWScene	"TafelZWScene" {expire="1s, 0.0"}
-Number KeukenZWScene	"KeukenZWScene" {expire="1s, 0.0"}
+Number KeukenAchterZWScene	"KeukenAchterZWScene" {expire="1s, 0.0"}
+Number KeukenVoorZWScene	"KeukenVoorZWScene" {expire="1s, 0.0"}
 Number BedZWScene	"BedZWScene" {expire="1s, 0.0"}
-Number OverloopZWScene	"OverloopZWScene"
+Number OverloopZWScene	"OverloopZWScene" {expire="1s, 0.0"}
 Number TafelZWBattery	"TafelZWBattery"
-Number KeukenZWBattery	"KeukenZWBattery"
+Number KeukenAchterZWBattery	"KeukenAchterZWBattery"
+Number KeukenVoorZWBattery	"KeukenVoorZWBattery"
 Number OverloopZWBattery	"OverloopZWBattery"
 Number BedZWBattery	"BedZWBattery"
 

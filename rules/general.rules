@@ -12,7 +12,9 @@ then
 	}
         sendCommand(TafelScene, 0)
         sendCommand(KamerScene, 0)
-        sendCommand(KeukenAanScene, 0)
+        sendCommand(KeukenAchterScene, 0)
+	sendCommand(KeukenMiddenScene, 0)
+	sendCommand(KeukenVoorScene, 0)
         sendCommand(KeukenPlaScene, 0)
         sendCommand(NosferatuS, OFF)
 	sendCommand(AllOff, OFF)

@@ -3,13 +3,15 @@ sitemap default label="Thuis"
         Frame label="Beneden" {
                 Switch item=KamerScene label="Kamer" icon="bank" mappings=[0="0", 1="[N]", 2="[T]", 3="[C]" ]
                 Switch item=TafelScene label="Tafel" icon="table" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
-                Switch item=KeukenAanScene label="Aanrecht" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
+                Switch item=KeukenVoorScene label="AanrechtV" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
+                Switch item=KeukenMiddenScene label="AanrechtM" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
+                Switch item=KeukenAchterScene label="AanrechtA" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
                 Switch item=Hal mappings=[OFF="Uit          ", ON="          Aan"]
                 Switch item=BelMode label="Bel" icon="bell" mappings=[ 0="[ B ]", 1="[  L  ]", 2="[B+L]" ]
                 Switch item=AllOff
         }
         Frame label="Boven" {
-                Switch item=FrontHallDimmer label="Voor" icon="corridor"
+                Switch item=FrontHallSwitch label="Voor" icon="corridor"
                 Switch item=OverloopAchterScene label="Achter" icon="corridor" mappings=[0="Uit", 1="[  N  ]", 2="[  F  ]"]
                 Switch item=BedScene label="" icon="bedroom" mappings=[0="Uit", 1="[  Z  ]", 2="[  N  ]", 3="[  F  ]"]
 		Switch item=Mika label="Mika"
@@ -20,11 +22,14 @@ sitemap default label="Thuis"
 		Slider item=CeilingDimmer label="Plafond" 
 		Slider item=NosferatuS label="NosferatuS" 
         }
-	Frame label="Data" {
+        Frame label="Data" {
+                Text item=ToonTemperature label="Woonkamer [%d °C]" icon="temperature"
 		Text item=TafelZWBattery	icon="battery"	label="Tafel Schakelaar  [%d %%]"
-		Text item=KeukenZWBattery	icon="battery"	label="Keuken Schakelaar  [%d %%]"
+		Text item=KeukenAchterZWBattery	icon="battery"	label="Keuken Achter Schakelaar  [%d %%]"
+		Text item=KeukenVoorZWBattery	icon="battery"	label="Keuken Voor Schakelaar  [%d %%]"
 		Text item=OverloopZWBattery	icon="battery"	label="Overloop Schakelaar  [%d %%]"
 		Text item=BedZWBattery	icon="battery"	label="Bed Schakelaar  [%d %%]"
+                Chart item=ToonTemperature period=4D refresh=300
 	}
 }
 

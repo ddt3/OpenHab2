@@ -1,0 +1,3 @@
+Number ToonTemperature "Kamer temperatuur" { http="<[ToonCache:10000:JSONPATH($.currentTemp)]" }
+Number ToonState  { http="<[ToonCache:10000:JSONPATH($.activeState)]" }
+//0 Comfort 1 Thuis 2 Slapen 3 Weg 
