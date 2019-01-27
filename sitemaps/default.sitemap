@@ -29,7 +29,6 @@ sitemap default label="Thuis"
 		Text item=KeukenVoorZWBattery	icon="battery"	label="Keuken Voor Schakelaar  [%d %%]"
 		Text item=OverloopZWBattery	icon="battery"	label="Overloop Schakelaar  [%d %%]"
 		Text item=BedZWBattery	icon="battery"	label="Bed Schakelaar  [%d %%]"
-                Chart item=ToonTemperature period=4D refresh=300
 	}
 }
 

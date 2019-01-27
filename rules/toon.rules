@@ -1,0 +1,17 @@
+rule "Set point change"
+when Item ToonTemperature changed 
+then
+    sendHttpGetRequest("http://toon.familie-dokter.lan/happ_thermstat?action=setSetpoint&Setpoint="+ ToonTemperature.state.toString)
+end
+
+rule "Switch Program state"
+when Item ToonProgramAan changed 
+then
+          sendHttpGetRequest("http://toon.familie-dokter.lan/happ_thermstat?action=changeSchemeState&state=" + ToonProgramAan.state.toString)           
+end
+
+rule "Switch state"
+when Item ToonState changed
+then
+    sendHttpGetRequest("http://toon.familie-dokter.lan/happ_thermstat?action=changeSchemeState&state=2&temperatureState=" + ToonState.state.toString)    
+end

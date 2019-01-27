@@ -6,10 +6,6 @@ Color   KeukenMiddenColorSim	"Middle Kitchen Light" ["Lighting"]
 Color   KeukenVoorColorSim	"Front Kitchen Light" ["Lighting"]
 Switch   FrontHallSwitch "Corridor light" ["Lighting"]
 Dimmer  CeilingDimmer	"Ceiling light" ["Lighting"]
-Switch  SBSim	"Squeezebox" ["Lighting"]
-Switch  TVSim	"Television" ["Lighting"]
-Switch  PSSim	"Playstation" ["Lighting"]
-Switch  RPSim	"Media Player" ["Lighting"]
-Switch  WiiSim	"Wii" ["Lighting"]
+
 Switch  GarageSim "Door" ["Lighting"]
 

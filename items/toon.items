@@ -1,3 +1,12 @@
-Number ToonTemperature "Kamer temperatuur" { http="<[ToonCache:10000:JSONPATH($.currentTemp)]" }
-Number ToonState  { http="<[ToonCache:10000:JSONPATH($.activeState)]" }
-//0 Comfort 1 Thuis 2 Slapen 3 Weg 
+Number KamerTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:10000:JSONPATH($.currentTemp)]" }
+Number ToonTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:10000:JSONPATH($.currentSetpoint)]" }
+Number ToonState  { http="<[ToonCacheTherm:10000:JSONPATH($.activeState)]" }
+Number ToonProgramAan { http="<[ToonCacheTherm:10000:JSONPATH($.programState)]" }
+/* 
+From the documentation
+http=">[<command>:<httpmethod>:<url>:<postcontent>]"
+
+Number SetState1 { http=">[CHANGED:GET:http://192.168.3.175/happ_thermstat?action=changeSchemeState&state=2&temperatureState=%2$" }
+Number SetState2 { http="<[ToonCacheTherm:10000:JSONPATH($.activeState)] >[CHANGED:GET:http://192.168.3.175/happ_thermstat?action=changeSchemeState&state=2&temperatureState=%2$" }
+*/ 
+//0 Comfort 1 Thuis 2 Slapen 3 Weg
