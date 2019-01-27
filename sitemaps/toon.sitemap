@@ -2,7 +2,7 @@ sitemap toon label="Toon" {
     Frame label="Thermostaat" icon="thermostat" {
         Setpoint item=ToonTemperature label="Gewenste Temperatuur [%d °C]" icon="temperature" minValue=00 maxValue=3000 step=50
         Text item=KamerTemperature label="Huidige Temperatuur [%d °C]" icon="temperature"
-        Text item=ToonProgramAan mappings=[0="Uit", 1="Aan"]
+        Selection item=ToonProgramAan label="Progamma" mappings=[0="Uit", 1="Aan"]
         Selection item=ToonState label="State" mappings=[0="Comfort", 1="Thuis", 2="Slapen", 3="Weg"]
         Chart item=KamerTemperature period=W refresh=300
     }
