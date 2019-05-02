@@ -1,4 +1,0 @@
-Group LoggerData
-Number LogTemperature "LogTemperatuur" (LoggerData) { mqtt="<[oh2:stat/pi-logger:state:JSONPATH($.temperature)]" } 
-Number LogPressure "LogPressure" (LoggerData) { mqtt="<[oh2:stat/pi-logger:state:JSONPATH($.pressure)]" }
-Number LogHumidity "LogHumidity" (LoggerData) { mqtt="<[oh2:stat/pi-logger:state:JSONPATH($.humidity)]" }

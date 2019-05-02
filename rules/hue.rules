@@ -23,26 +23,40 @@ rule "Tafel kleuren"
 when
 	Item TafelColorSim received command
 then 
+	logDebug("TafelKLeuren", "--1---command is: "+TafelColorSim.state)
+
 	var TafelSceneTemp=3
 	if (receivedCommand.toString == "60,100,100" || receivedCommand.toString == "73,81,37" ) {
 		postUpdate(TafelColorSim, "73,81,37") 
 		TafelSceneTemp=1
+		logDebug("TafelKLeuren", "--2---command is: "+TafelColorSim.state)
+
 	} else if (receivedCommand.toString == "240,100,100" || receivedCommand.toString == "84,47,100") {
 		postUpdate(TafelColorSim, "84,47,100")
 		TafelSceneTemp=2
+		logDebug("TafelKLeuren", "--3---command is: "+TafelColorSim.state)
 	} else if (receivedCommand == OFF ) {
 		TafelSceneTemp=0
+		logDebug("TafelKLeuren", "--4---command is: "+TafelColorSim.state)
+
 	}
+	logDebug("TafelKLeuren", "--5---tafelscene is: "+TafelScene+","+TafelSceneTemp)
 
 	Thread::sleep(200)
  	postUpdate(TafelScene,TafelSceneTemp)
 	if (TafelSceneTemp == 3)
 	{
 		CustomTafelColorSim=TafelColorSim.state.toString
+		logDebug("TafelKLeuren", "--6---tafelscene is: "+CustomTafelColorSim+","+TafelColorSim)
+
 	}
-	sendCommand(TafelKamerC,TafelColorSim.state)
+	logDebug("TafelKLeuren", "--7---tafelscene is: "+TafelKamerC+","+TafelColorSim.state)
+
+	sendCommand(TafelKamerC,TafelColorSim.state.toString)
 	Thread::sleep(100)
-	sendCommand(TafelRaamC,TafelColorSim.state)
+	logDebug("TafelKLeuren", "--8---tafelscene is: "+TafelRaamC+","+TafelColorSim.state)
+
+	sendCommand(TafelRaamC,TafelColorSim.state.toString)
 end
 
 
@@ -158,7 +172,7 @@ then
 	{
 		CustomKeukenAchterColorSim=KeukenAchterColorSim.state.toString
 	}
-	KeukenStripAchterC.sendCommand(KeukenAchterColorSim.state)
+	KeukenStripAchterC.sendCommand(KeukenAchterColorSim.state.toString)
 end
 //---------------------Midden Aanrecht-----------------------------------
 rule "Keuken Midden Scene"
@@ -202,7 +216,7 @@ then
 	{
 		CustomKeukenMiddenColorSim=KeukenMiddenColorSim.state.toString
 	}
-	KeukenStripMiddenC.sendCommand(KeukenMiddenColorSim.state)
+	KeukenStripMiddenC.sendCommand(KeukenMiddenColorSim.state.toString)
 end
 
  //---------------------Voor Aanrecht-----------------------------------
@@ -247,7 +261,7 @@ then
 	{
 		CustomKeukenVoorColorSim=KeukenVoorColorSim.state.toString
 	}
-	KeukenStripVoorC.sendCommand(KeukenVoorColorSim.state)
+	KeukenStripVoorC.sendCommand(KeukenVoorColorSim.state.toString)
 end
 rule "Overloop Achter scene"
 when
