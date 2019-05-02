@@ -1,0 +1,5 @@
+Switch piGarage  "piGarage"
+{ mqtt=">[oh2:cmnd/pi-garage/relais:command:*:default],
+            <[oh2:stat/pi-garage/relais:state:default]" }
+String piGarageStatus  "piGarage Status"
+{ mqtt="<[oh2:cmnd/pi-garage-state:state:default]" }

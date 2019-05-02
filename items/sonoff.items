@@ -17,4 +17,3 @@ Switch GarageDicht  "Garage Dicht"
 Switch Mika  "Mika"
 { mqtt=">[oh2:cmnd/sonoff-mika/power:command:*:default],
             <[oh2:stat/sonoff-mika/POWER:state:default]" }
-

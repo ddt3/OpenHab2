@@ -1,0 +1,11 @@
+sitemap experiment label="Experiment" {
+    Frame label="Garage" icon="garagedoor" {
+    Switch item=piGarage
+    Text item=piGarageStatus label="Status [%s]"
+  }    
+  Frame label="Logger"  {
+    Text item=LogHumidity label="Vocht: [%.1f]"
+    Text item=LogTemperature label="Temperatuur: [%.1f]"
+    Text item=LogPressure label="Druk: [%.1f]"
+  }
+}

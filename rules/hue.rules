@@ -82,14 +82,14 @@ then
 		KamerScene1Doe=0
 		KamerSceneTemp=1
 		postUpdate(KamerColorSim, "70,100,100")
-		KamerColorSimZL = "0,0,50"
+		KamerColorSimZL = "0,0,100"
 		KamerColorSimSL = "70,100,100"
 		KamerColorSimLC = "89,100,100"
 	} else if (receivedCommand.toString == "240,100,100" || KamerScene2Doe == 1 ) {
 		KamerScene2Doe=0
 		KamerSceneTemp=2
 		postUpdate(KamerColorSim, "70,100,100") 
-		KamerColorSimZL = "0,0,50"
+		KamerColorSimZL = "0,0,100"
 		KamerColorSimSL = "OFF"
 		KamerColorSimLC = "89,100,100"
 	} else if (receivedCommand == OFF ) {

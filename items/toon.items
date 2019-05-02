@@ -1,7 +1,7 @@
-Number KamerTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:10000:JSONPATH($.currentTemp)]" }
-Number ToonTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:10000:JSONPATH($.currentSetpoint)]" }
-Number ToonState  { http="<[ToonCacheTherm:10000:JSONPATH($.activeState)]" }
-Number ToonProgramAan { http="<[ToonCacheTherm:10000:JSONPATH($.programState)]" }
+Number KamerTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:1000000:JSONPATH($.currentTemp)]" }
+Number ToonTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:1000000:JSONPATH($.currentSetpoint)]" }
+Number ToonState  { http="<[ToonCacheTherm:1000000:JSONPATH($.activeState)]" }
+Number ToonProgramAan { http="<[ToonCacheTherm:1000000:JSONPATH($.programState)]" }
 /* 
 From the documentation
 http=">[<command>:<httpmethod>:<url>:<postcontent>]"
