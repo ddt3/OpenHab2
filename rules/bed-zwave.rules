@@ -19,7 +19,7 @@ then
 		case 15 : { }
 		case 16 : { }
 		case 2.0 : { 
-                        if( FrontHallSwitch.state ) {
+                        if( FrontHallSwitch.state == ON ) {
                                 sendCommand(FrontHallSwitch, OFF)
                         } else {
                                 sendCommand(FrontHallSwitch, ON)

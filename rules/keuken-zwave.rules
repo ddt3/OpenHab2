@@ -70,14 +70,28 @@ then
 			}		
 		}
 		case 2.0 : { /* RechtsBoven Klik*/ 
-			
+			if (KeukenVoorScene.state > 0) {
+				sendCommand(KeukenAchterScene, 0)
+				sendCommand(KeukenMiddenScene, 0)
+				sendCommand(KeukenVoorScene, 0)
+			} else {
+				sendCommand(KeukenAchterScene, 1)
+				sendCommand(KeukenMiddenScene, 1)
+				sendCommand(KeukenVoorScene, 1)
+			}
 		}
 		case 2.1 : { /*Lang los */}
 		case 2.2 : { /*Lang vast*/
-			sendCommand(KeukenAchterScene, 0)
-			sendCommand(KeukenMiddenScene, 0)
-			sendCommand(KeukenVoorScene, 0)
-			sendCommand(CeilingDimmer, 0)
+			if( KeukenVoorScene.state != 2 ) {
+				sendCommand(KeukenAchterScene, 2)
+				sendCommand(KeukenMiddenScene, 2)
+				sendCommand(KeukenVoorScene, 2)
+			} else {
+				sendCommand(KeukenAchterScene, 1)
+				sendCommand(KeukenMiddenScene, 1)
+				sendCommand(KeukenVoorScene, 1)
+			}		
+			
 
 		}
 		case 5.0 : { /* LinksOnder Klik*/

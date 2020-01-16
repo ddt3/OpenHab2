@@ -1,0 +1,45 @@
+var Timer otimer
+
+ //---------------------Overloop Achter--------------------------------
+rule "Overloop Achter scene"
+when
+        Item OverloopAchterScene received command
+then
+        if(otimer!==null) {
+                otimer.cancel
+                otimer = null
+        }
+        switch(receivedCommand) {
+        case 1 :  {
+                sendCommand(OverloopAchterC, "0,0,50")
+        }
+        case 2 :  {
+                sendCommand(OverloopAchterC, "0,0,100")
+        }
+        case 3: {
+                sendCommand(FrontHallSwitch,ON)
+                sendCommand(OverloopAchterC, "0,0,10")
+                otimer = createTimer(now.plusSeconds(30)) [|
+	                sendCommand(FrontHallSwitch,OFF)
+                        sendCommand(OverloopAchterScene,0)
+                ]
+        }
+        default : {
+                sendCommand(OverloopAchterC, OFF)
+        }
+}
+
+end
+rule "Bed scene"
+when
+        Item BedScene received command
+then
+ /*
+        switch(receivedCommand) {
+                case 1 :  { sendCommand(BedLampC, 33)}
+                case 2 :  { sendCommand(BedLampC, 66)}
+                case 3 :  { sendCommand(BedLampC, 100)}
+                default : { sendCommand(BedLampC, OFF) }
+        }
+	*/
+end

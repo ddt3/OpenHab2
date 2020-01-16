@@ -18,17 +18,17 @@ sitemap default label="Thuis"
         }
         Frame label="Informatie" icon="settings" {
 		Switch  item=DriesOnderweg label="Dries Onderweg"
-		Text item=GarageStatus icon="garagedoor" label="Garage is [%s]" valuecolor=["Dicht"="green", "Open"="red"]
-		Slider item=CeilingDimmer label="Plafond" 
-		Slider item=NosferatuS label="NosferatuS" 
+                Text item=GarageSim label="Garage Deur" labelcolor=[<0="red", 100="green"]
+		Slider item=Plafond_Computerkast_Brightness label="Computerkast" 
+		Slider item=Plafond_Kamer_Brightness label="Kamer" 
         }
         Frame label="Data" {
-                Text item=ToonTemperature label="Woonkamer [%d °C]" icon="temperature"
+                // Text item=ToonTemperature label="Woonkamer [%d °C]" icon="temperature"
 		Text item=TafelZWBattery	icon="battery"	label="Tafel Schakelaar  [%d %%]"
 		Text item=KeukenAchterZWBattery	icon="battery"	label="Keuken Achter Schakelaar  [%d %%]"
 		Text item=KeukenVoorZWBattery	icon="battery"	label="Keuken Voor Schakelaar  [%d %%]"
 		Text item=OverloopZWBattery	icon="battery"	label="Overloop Schakelaar  [%d %%]"
-		Text item=BedZWBattery	icon="battery"	label="Bed Schakelaar  [%d %%]"
+		// Text item=BedZWBattery	icon="battery"	label="Bed Schakelaar  [%d %%]"
 	}
 }
 

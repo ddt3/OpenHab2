@@ -1,0 +1,160 @@
+
+var String CustomTafelColorSim = "120,20,20"
+var String CustomKamerColorSim = "120,20,20"
+//Kamer scene 1 kleuren
+var String KamerCColor_S1_ZL = "0,0,100"
+var String KamerCColor_S1_SL = "35,100,50"
+var String KamerCColor_S1_TV = "35,100,35"
+
+//Kamer scene 2 kleuren
+var String KamerCColor_S2_ZL = "0,0,100"
+var String KamerCColor_S2_SL = "OFF"
+var String KamerCColor_S2_TV = "35,100,35"
+
+
+//Tafel scene 1 kleuren
+
+var String TafelCColor_S1= "35,100,50"
+//Tafel scene 2 kleuren
+var String TafelCColor_S2= "49,45,100"
+
+//---------------------Tafel-----------------------------------
+rule "Tafel scene"
+when
+        Item TafelScene received command
+then
+    switch(receivedCommand) {
+        case 1 :  {
+			sendCommand(TafelKamer_ColorTemperature, "0")
+			sendCommand(TafelRaam_ColorTemperature, "0")
+			sendCommand(TafelKamerC,TafelCColor_S1)
+			sendCommand(TafelRaamC,TafelCColor_S1) 
+
+		}
+        case 2 :  {
+			sendCommand(TafelKamer_ColorTemperature, "0")
+			sendCommand(TafelRaam_ColorTemperature, "0")
+			sendCommand(TafelKamerC,TafelCColor_S2)
+			sendCommand(TafelRaamC,TafelCColor_S2) 
+		}  
+        case 3 :  {
+			sendCommand(TafelKamerC, CustomTafelColorSim)
+			sendCommand(TafelRaamC, CustomTafelColorSim)
+		}
+        default : {
+			sendCommand(TafelKamerC, OFF)
+			sendCommand(TafelRaamC, OFF)
+		} 
+	}
+
+end
+
+rule "Tafel kleuren"
+when
+	Item TafelColorSim received command
+then 
+	var String IncomingColor = receivedCommand.toString
+	if (IncomingColor == "60,100,100" || IncomingColor == TafelCColor_S1) {
+		postUpdate(TafelColorSim, TafelCColor_S1) 
+		sendCommand(TafelScene,1)
+	} else if (IncomingColor == "240,100,100" || IncomingColor == TafelCColor_S2) {
+		postUpdate(TafelColorSim, TafelCColor_S2)
+		sendCommand(TafelScene,2)
+	} else if (receivedCommand == OFF ) {
+		sendCommand(TafelScene,0)
+	} else {
+		CustomTafelColorSim = IncomingColor
+		sendCommand(TafelScene,3)
+	}
+end
+
+
+//---------------------Kamer-----------------------------------
+rule "Kamer scene"
+when
+        Item KamerScene received command
+then
+	switch(receivedCommand) {
+		case 1 :  { 
+			//Normaal
+			sendCommand(ZonneLampC, KamerCColor_S1_ZL)
+			sendCommand(SchemerLampC, KamerCColor_S1_SL)
+			sendCommand(LightStripTVC, KamerCColor_S1_TV)
+			sendCommand(TVKastLinks_ColorTemperature,100)
+			sendCommand(TVKastRechts_ColorTemperature,100)
+			sendCommand(TVKastLinks_Brightness,20)
+			sendCommand(TVKastRechts_Brightness,20)
+		}
+		case 2 :  { 
+			//TV Kijken
+			sendCommand(ZonneLampC, KamerCColor_S2_ZL)
+			sendCommand(SchemerLampC, KamerCColor_S2_SL)
+			sendCommand(LightStripTVC, KamerCColor_S2_TV)
+			sendCommand(TVKastLinks_ColorTemperature,100)
+			sendCommand(TVKastRechts_ColorTemperature,100)
+			sendCommand(TVKastLinks_Brightness,20)
+			sendCommand(TVKastRechts_Brightness,20)
+		}
+		case 3 :  { 
+			sendCommand(ZonneLampC, CustomKamerColorSim)
+			sendCommand(SchemerLampC, CustomKamerColorSim)
+			sendCommand(LightStripTVC, CustomKamerColorSim)		}
+		default : {
+			// Off
+			sendCommand(ZonneLampC, OFF)
+			sendCommand(SchemerLampC, OFF)
+			sendCommand(LightStripTVC, OFF)
+			sendCommand(TVKastLinks_Brightness,OFF)
+			sendCommand(TVKastRechts_Brightness,OFF)
+		}
+	}
+end
+
+rule "Kamer kleuren"
+when
+	Item KamerColorSim received command
+then 
+var String IncomingColor = receivedCommand.toString
+	if (IncomingColor == "60,100,100" || IncomingColor == KamerCColor_S1_SL) {
+		postUpdate(KamerColorSim, KamerCColor_S1_SL) 
+		sendCommand(KamerScene,1)
+	} else if (IncomingColor == "240,100,100" ) {
+		postUpdate(KamerColorSim, KamerCColor_S2_SL)
+		sendCommand(KamerScene,2)
+	} else if (receivedCommand == OFF ) {
+		sendCommand(KamerScene,0)
+	} else {
+		CustomKamerColorSim = IncomingColor
+		sendCommand(KamerScene,3)
+	}
+end
+
+
+
+
+rule "Tafel lamp uit aan"
+when
+        Item SchemerLampC received update
+then
+        if (SchemerLampC == "81,56,100" ) {
+		switch(KamerScene) {
+			case 1 :  { sendCommand(KamerScene, 1) }
+			case 2 :  { sendCommand(KamerScene, 2) }
+			default : { sendCommand(KamerScene, 0) }
+			}
+	}
+
+end
+
+// TV Lichten
+rule "TV Kast Lichten"
+when
+		Item HubActivity received update
+then 
+	var String Activiteit = HubActivity.state.toString
+
+	if (Activiteit == "TV Kijken" || Activiteit == "Watch Fire TV" || Activiteit == "PS3 Spelen"|| Activiteit == "Wii-en"){
+		sendCommand(KamerScene,2)
+	}
+
+end

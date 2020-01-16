@@ -13,11 +13,11 @@ then
 			}
 		}
 		case 1.1 : { 
-			if( BuitenC.state == ON ) {
-				sendCommand(BuitenS, OFF)
-			} else {
-				sendCommand(BuitenS, ON)
-			}
+			// if( BuitenC.state == ON ) {
+			// 	sendCommand(BuitenS, OFF)
+			// } else {
+			// 	sendCommand(BuitenS, ON)
+			// }
 		}
 		case 13 : { }
 		case 14 : { }

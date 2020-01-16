@@ -1,0 +1,133 @@
+var String CustomKeukenAchterColorSim = "120,20,20"
+var String CustomKeukenVoorColorSim = "120,20,20"
+var String CustomKeukenMiddenColorSim = "120,20,20"
+
+//Scene kleuren
+var String KeukenVoor_S1= "35,100,80"
+var String KeukenVoor_S2= "49,45,100"
+var String KeukenMidden_S1= "35,100,80"
+var String KeukenMidden_S2= "49,45,100"
+var String KeukenAchter_S1= "35,100,80"
+var String KeukenAchter_S2= "49,45,100"
+
+//---------------------Achter Aanrecht-----------------------------------
+rule "Keuken Achter Scene"
+when
+        Item KeukenAchterScene received command
+then
+        switch(receivedCommand) {
+                case 1 :  {
+                        sendCommand(KeukenStripAchterC, KeukenAchter_S1)
+                }
+                case 2 :  {
+                        sendCommand(KeukenStripAchterC, KeukenAchter_S2)
+                }
+                case 3 :  {
+                        sendCommand(KeukenStripAchterC, CustomKeukenAchterColorSim)
+                }
+                default : {
+                        sendCommand(KeukenStripAchterC, OFF)
+                }
+        }
+end
+
+rule "Aanrecht achter kleuren"
+when
+	Item KeukenAchterColorSim received command
+then 
+	var String IncomingColor = receivedCommand.toString
+	if (IncomingColor== "60,100,100" || IncomingColor == KeukenAchter_S1) {
+	        postUpdate(KeukenAchterColorSim, KeukenAchter_S1)
+                sendCommand(KeukenAchterScene,1)
+	} else if (IncomingColor == "240,100,100" || IncomingColor == KeukenAchter_S2) {
+		postUpdate(KeukenAchterColorSim, KeukenAchter_S2)
+                sendCommand(KeukenAchterScene,2)
+	} else if (receivedCommand == OFF ) {
+                sendCommand(KeukenAchterScene,0)
+	} else {
+                CustomKeukenAchterColorSim=IncomingColor
+                sendCommand(KeukenAchterScene,3)
+        }
+end
+//---------------------Midden Aanrecht-----------------------------------
+rule "Keuken Midden Scene"
+when
+        Item KeukenMiddenScene received command
+then
+        switch(receivedCommand) {
+                case 1 :  {
+                        sendCommand(KeukenStripMiddenC, KeukenMidden_S1)
+                }
+                case 2 :  {
+                        sendCommand(KeukenStripMiddenC, KeukenMidden_S2)
+                }
+                case 3 :  {
+                        sendCommand(KeukenStripMiddenC, CustomKeukenMiddenColorSim)
+                }
+                default : {
+                        sendCommand(KeukenStripMiddenC, OFF)
+                }
+        }
+end
+
+rule "Aanrecht Midden kleuren"
+when
+	Item KeukenMiddenColorSim received command
+then
+	var String IncomingColor = receivedCommand.toString
+	if (IncomingColor == "60,100,100" || IncomingColor == KeukenMidden_S1) {
+		postUpdate(KeukenMiddenColorSim, KeukenMidden_S1 )
+		sendCommand(KeukenMiddenScene,1)
+	} else if (IncomingColor == "240,100,100" || IncomingColor == KeukenMidden_S2) {
+		postUpdate(KeukenMiddenColorSim, KeukenMidden_S2)
+		sendCommand(KeukenMiddenScene,2)
+	} else if (receivedCommand == OFF ) {
+		sendCommand(KeukenMiddenScene,0)
+	} else{
+        CustomKeukenMiddenColorSim=IncomingColor
+        sendCommand(KeukenMiddenScene,3)
+
+	}
+end
+
+ //---------------------Voor Aanrecht-----------------------------------
+rule "Keuken Voor Scene"
+when
+        Item KeukenVoorScene received command
+then
+		switch(receivedCommand) {
+                case 1 :  {
+                        sendCommand(KeukenStripVoorC, KeukenVoor_S1)
+                }
+                case 2 :  {
+                        sendCommand(KeukenStripVoorC, KeukenVoor_S2)
+                }
+                case 3 :  {
+                        sendCommand(KeukenStripVoorC, CustomKeukenVoorColorSim)
+                }
+                default : {
+                        sendCommand(KeukenStripVoorC, OFF)
+                }
+        }
+end
+
+rule "Aanrecht Voor kleuren"
+when
+	Item KeukenVoorColorSim received command
+then
+	var String IncomingColor = receivedCommand.toString
+	if (IncomingColor == "60,100,100" || IncomingColor == KeukenVoor_S1) {
+		postUpdate(KeukenVoorColorSim, KeukenVoor_S1) 
+		sendCommand(KeukenVoorScene,1)
+		
+	} else if (IncomingColor == "240,100,100" || IncomingColor == KeukenVoor_S2) {
+		postUpdate(KeukenVoorColorSim, KeukenVoor_S2)
+		sendCommand(KeukenVoorScene,2)
+		
+	} else if (receivedCommand == OFF ) {
+		sendCommand(KeukenVoorScene,0)
+	} else {
+                CustomKeukenVoorColorSim=IncomingColor
+		sendCommand(KeukenVoorScene,3)
+	}
+end

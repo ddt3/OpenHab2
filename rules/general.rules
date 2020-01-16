@@ -10,13 +10,13 @@ then
 	{
 		 sendCommand(OverloopVoorScene, 1)
 	}
-        sendCommand(TafelScene, 0)
-        sendCommand(KamerScene, 0)
-        sendCommand(KeukenAchterScene, 0)
+	sendCommand(TafelScene, 0)
+	sendCommand(KamerScene, 0)
+	sendCommand(KeukenAchterScene, 0)
 	sendCommand(KeukenMiddenScene, 0)
 	sendCommand(KeukenVoorScene, 0)
-        sendCommand(KeukenPlaScene, 0)
-        sendCommand(NosferatuS, OFF)
+	sendCommand(KeukenPlaScene, 0)
+	sendCommand(NosferatuS, OFF)
 	sendCommand(AllOff, OFF)
 	if(HubActivity.state != "PowerOff") {
 		sendCommand(HubActivity,"PowerOff")

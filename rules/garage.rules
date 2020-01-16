@@ -1,33 +1,32 @@
 rule "Deur open voor Dries"
 when
-    Item GarageSim changed from OFF to ON
+    Item GarageSim received command UP
 then
-	logInfo("Garage", "---DriesOnderweg state is: "+DriesOnderweg.state)
+	logInfo("Garage", "-UP--DriesOnderweg state is: "+DriesOnderweg.state)
 	if ( DriesOnderweg.state == ON ) {
-	logInfo("Garage", "---Door will be opened ")
+		logInfo("Garage", "---Door will be opened ")
 		sendCommand(DriesOnderweg, OFF)
-		sendCommand(Garage, ON)
-		logInfo("Garage", "---Garage Door is OPEN")
-		sendCommand(GarageSim, OFF)
+		sendCommand(piGarage, ON)
+		logInfo("Garage", "---Garage Door is Opening")
 	}
-	sendCommand(GarageSim, OFF)
 end
 
 rule "Garage Deur update"
 when 
-	Item GarageOpen received update or
-	Item GarageDicht received update
+	Item piGarageStatus received update 
 then 
-	if (GarageOpen.state == ON && GarageDicht.state == OFF) {
-		postUpdate(GarageStatus, "Open")
-		sendCommand(TafelRaamC, "360,100,50")
-	}
-	if (GarageOpen.state == OFF && GarageDicht.state == OFF) {
-		postUpdate(GarageStatus, "Beweegt")
-		sendCommand(TafelRaamC, "360,100,50")
-	}
-	if (GarageOpen.state == OFF && GarageDicht.state == ON) {
-		postUpdate(GarageStatus, "Dicht")
-		sendCommand(TafelScene, TafelScene.state)
+	logInfo("Garage", "-Status--piGarageStatus state is: "+piGarageStatus.state)
+	if (piGarageStatus.state.toString == "OPEN" ) {
+			sendCommand(GarageSim, 0)
+	} 
+	else if (piGarageStatus.state.toString == "CLOSED") {
+			sendCommand(GarageSim, 100)
+		}
+		else  {
+			sendCommand(GarageSim, 50)
+		}
+	if (piGarageStatus.state.toString == "UNDEFINED") {
+		sendCommand(GarageSim,50)
+	    sendNotification("dries.dokter@gmail.com", "Garage deur niet dicht?")
 	}
 end
