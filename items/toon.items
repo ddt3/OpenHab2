@@ -1,12 +1,28 @@
-Number KamerTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:1000000:JSONPATH($.currentTemp)]" }
-Number ToonTemperature "Kamer temperatuur" { http="<[ToonCacheTherm:1000000:JSONPATH($.currentSetpoint)]" }
-Number ToonState  { http="<[ToonCacheTherm:1000000:JSONPATH($.activeState)]" }
-Number ToonProgramAan { http="<[ToonCacheTherm:1000000:JSONPATH($.programState)]" }
-/* 
-From the documentation
-http=">[<command>:<httpmethod>:<url>:<postcontent>]"
+// Number ToonState "ToonState"
+// Number ToonProgramAan "ToonProgramAan"
 
-Number SetState1 { http=">[CHANGED:GET:http://192.168.3.175/happ_thermstat?action=changeSchemeState&state=2&temperatureState=%2$" }
-Number SetState2 { http="<[ToonCacheTherm:10000:JSONPATH($.activeState)] >[CHANGED:GET:http://192.168.3.175/happ_thermstat?action=changeSchemeState&state=2&temperatureState=%2$" }
-*/ 
-//0 Comfort 1 Thuis 2 Slapen 3 Weg
+// Number ToonGasMeter "Gas Verbruik"
+// Number ToonPowerMeter "Stroom Verbruik"            
+// Number ToonPowerLow "ToonPowerLow"        
+
+// Number ToonModulation "ToonModulationLevel"      
+// Switch ToonHeater "ToonHeater"           
+// Switch ToonPreHeat    "ToonPreHeat"      
+
+
+Number     RoomTemperature            "Temperature"            {channel="rootedtoon:toon:36f3e2e5:Temperature"}
+Number     SetPointemperature         "Setpoint"               {channel="rootedtoon:toon:36f3e2e5:Setpoint"}
+Number     ToonSetpointMode           "Setpoint mode"          {channel="rootedtoon:toon:36f3e2e5:SetpointMode"}
+Number     ToonGasMeterReading        "Gas Meter Reading"      {channel="rootedtoon:toon:36f3e2e5:GasMeterReading"}
+Number     ToonGasConsumption         "Gas Consumption"        {channel="rootedtoon:toon:36f3e2e5:GasConsumption"}
+Number     ToonPowerMeterReading      "Energy, high rate"      {channel="rootedtoon:toon:36f3e2e5:PowerMeterReading"}
+Number     ToonPowerMeterReadingLow   "Energy, low rate"       {channel="rootedtoon:toon:36f3e2e5:PowerMeterReadingLow"}
+Switch     ToonProgramEnabled         "Program enabled"        {channel="rootedtoon:toon:36f3e2e5:ProgramEnabled"}
+Number     ToonPowerConsumption       "Power"                  {channel="rootedtoon:toon:36f3e2e5:PowerConsumption"}
+Number     ToonModulationLevel        "Modulation level"       {channel="rootedtoon:toon:36f3e2e5:ModulationLevel"}
+Switch     ToonHeating                "Heating"                {channel="rootedtoon:toon:36f3e2e5:Heating"}
+Switch     ToonTapwater               "Tapwater"               {channel="rootedtoon:toon:36f3e2e5:Tapwater"}
+Switch     ToonPreheat                "Preheat"                {channel="rootedtoon:toon:36f3e2e5:Preheat"}
+Number     ToonNextSetpoint           "Next setpoint"          {channel="rootedtoon:toon:36f3e2e5:NextSetpoint"}
+DateTime   ToonNextSetpointTime       "Next setpoint moment"   {channel="rootedtoon:toon:36f3e2e5:NextSetpointTime"}
+Number     ToonBoilerSetpoint         "Boiler setpoint"        {channel="rootedtoon:toon:36f3e2e5:BoilerSetpoint"}
