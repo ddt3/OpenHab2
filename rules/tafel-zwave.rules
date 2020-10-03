@@ -1,9 +1,20 @@
+var Timer timerTafelZWScene
 // Tafel Schakelaar
 rule "Tafel Schakelaar"
 when
-        Item TafelZWScene changed
+        Item TafelZWScene changed 
 then
-	logInfo("zwave-test", "Detected state is: "+TafelZWScene.state)
+	logDebug("tafel", "Detected state is: "+TafelZWScene.state)
+	// if(timerTafelZWScene === null) {
+	// 	timerTafelZWScene = createTimer(now.plusSeconds(1), [|
+	// 		TafelZWScene.sendCommand(0.0)
+	// 		timerTafelZWScene = null
+	// 		logDebug("tafel", "TafelZWScene.sendCommand(0.0)")
+	// 	])
+	// 	}
+	// else {
+	// 	timerTafelZWScene.reschedule(now.plusSeconds(1))
+	// }
 	switch(TafelZWScene.state) {
 		case 1.0 : { 
 			if( Hal.state == ON ) {
@@ -11,6 +22,7 @@ then
 			} else {
 				sendCommand(Hal, ON)
 			}
+			sendCommand(TafelZWScene,0.0)
 		}
 		case 1.1 : { 
 			// if( BuitenC.state == ON ) {
@@ -29,17 +41,13 @@ then
 			} else {
 				sendCommand(FrontHallSwitch, ON)
 			}
+			sendCommand(TafelZWScene,0.0)
 		}
-		case 22 : { 
-			if( KeukenAchterScene.state > 0 ) {
-				sendCommand(KeukenAchterScene, 0)
-			} else {
-				sendCommand(KeukenAchterScene, 1)
-			}
-
+		case 2.1 : { 
 		}
 		case 2.2 : { 
 			sendCommand(AllOff, ON)
+			sendCommand(TafelZWScene,0.0)
 		}
 		case 24 : { }
 		case 25 : { }
@@ -47,11 +55,16 @@ then
 		case 5.0 : { 
 			if( TafelScene.state > 0 ) {
 				sendCommand(TafelScene, 0)
+				logDebug("tafel", "sendCommand(TafelScene, 0)")
+
 			} else {
 				sendCommand(TafelScene, 1)
+				logDebug("tafel", "sendCommand(TafelScene, 1)")
 			}
+			sendCommand(TafelZWScene,0.0)
 		}
-		case 32 : { }
+		case 5.1 : {
+		}
 		case 5.2 : { 
 			if( TafelScene.state != 2 ) {
 				sendCommand(TafelScene, 2)
@@ -82,5 +95,12 @@ then
 		case 46 : { }
 		default : {  }
         }
+end
 
+rule "keep tafel-zwave rules  in memory"
+//use the compiled code in this rule file every minute
+when
+    Time cron "0 0/1 * 1/1 * ? *"
+then
+    logInfo("keeptafelzwave","Keep compiled tafel-zwave rules") 
 end

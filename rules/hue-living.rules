@@ -11,10 +11,10 @@ var String KamerCColor_S2_ZL = "0,0,100"
 var String KamerCColor_S2_SL = "OFF"
 var String KamerCColor_S2_TV = "35,100,35"
 
-
+//
 //Tafel scene 1 kleuren
 
-var String TafelCColor_S1= "35,100,50"
+var String TafelCColor_S1= "49,100,50"
 //Tafel scene 2 kleuren
 var String TafelCColor_S2= "49,45,100"
 
@@ -23,27 +23,23 @@ rule "Tafel scene"
 when
         Item TafelScene received command
 then
+    logDebug("tafel", "TafelScene received command")
     switch(receivedCommand) {
         case 1 :  {
-			sendCommand(TafelKamer_ColorTemperature, "0")
-			sendCommand(TafelRaam_ColorTemperature, "0")
-			sendCommand(TafelKamerC,TafelCColor_S1)
-			sendCommand(TafelRaamC,TafelCColor_S1) 
-
+			sendCommand(HueTableZoneColor,TafelCColor_S1)
+			logDebug("tafel", "sendCommand(HueTableZoneColor,TafelCColor_S1)")
 		}
         case 2 :  {
-			sendCommand(TafelKamer_ColorTemperature, "0")
-			sendCommand(TafelRaam_ColorTemperature, "0")
-			sendCommand(TafelKamerC,TafelCColor_S2)
-			sendCommand(TafelRaamC,TafelCColor_S2) 
+			sendCommand(HueTableZoneColor,TafelCColor_S2)
+			logDebug("tafel", "sendCommand(HueTableZoneColor,TafelCColor_S2)")
 		}  
         case 3 :  {
-			sendCommand(TafelKamerC, CustomTafelColorSim)
-			sendCommand(TafelRaamC, CustomTafelColorSim)
+			sendCommand(HueTableZoneColor,CustomTafelColorSim)
+			logDebug("tafel", "sendCommand(HueTableZoneColor,CustomTafelColorSim)")
 		}
-        default : {
-			sendCommand(TafelKamerC, OFF)
-			sendCommand(TafelRaamC, OFF)
+		default : {
+			sendCommand(HueTableZoneSwitch , OFF)
+			logDebug("tafel", "sendCommand(HueTableZoneSwitch , OFF)")
 		} 
 	}
 
@@ -80,32 +76,41 @@ then
 			sendCommand(ZonneLampC, KamerCColor_S1_ZL)
 			sendCommand(SchemerLampC, KamerCColor_S1_SL)
 			sendCommand(LightStripTVC, KamerCColor_S1_TV)
+			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
 			sendCommand(TVKastLinks_ColorTemperature,100)
 			sendCommand(TVKastRechts_ColorTemperature,100)
 			sendCommand(TVKastLinks_Brightness,20)
 			sendCommand(TVKastRechts_Brightness,20)
+			sendCommand(ZoutLampRelayOutput,ON)
 		}
 		case 2 :  { 
 			//TV Kijken
 			sendCommand(ZonneLampC, KamerCColor_S2_ZL)
 			sendCommand(SchemerLampC, KamerCColor_S2_SL)
 			sendCommand(LightStripTVC, KamerCColor_S2_TV)
+			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
 			sendCommand(TVKastLinks_ColorTemperature,100)
 			sendCommand(TVKastRechts_ColorTemperature,100)
 			sendCommand(TVKastLinks_Brightness,20)
 			sendCommand(TVKastRechts_Brightness,20)
+			sendCommand(ZoutLampRelayOutput,ON)
 		}
 		case 3 :  { 
 			sendCommand(ZonneLampC, CustomKamerColorSim)
 			sendCommand(SchemerLampC, CustomKamerColorSim)
-			sendCommand(LightStripTVC, CustomKamerColorSim)		}
+			sendCommand(LightStripTVC, CustomKamerColorSim)
+			sendCommand(OlifantBovenColor, CustomKamerColorSim)
+		}
 		default : {
 			// Off
 			sendCommand(ZonneLampC, OFF)
 			sendCommand(SchemerLampC, OFF)
 			sendCommand(LightStripTVC, OFF)
+			sendCommand(OlifantBovenColor, OFF)			
 			sendCommand(TVKastLinks_Brightness,OFF)
 			sendCommand(TVKastRechts_Brightness,OFF)
+			sendCommand(ZoutLampRelayOutput,OFF)
+
 		}
 	}
 end
@@ -153,8 +158,15 @@ when
 then 
 	var String Activiteit = HubActivity.state.toString
 
-	if (Activiteit == "TV Kijken" || Activiteit == "Watch Fire TV" || Activiteit == "PS3 Spelen"|| Activiteit == "Wii-en"){
-		sendCommand(KamerScene,2)
+	if (Activiteit == "TV Kijken" || Activiteit == "Watch Fire TV" || Activiteit == "PS3 Spelen"|| Activiteit == "Nintendo Switch"){
+		sendCommand(KamerScene,1)
 	}
 
+end
+rule "keep hue-living rules  in memory"
+//use the compiled code in this rule file every minute
+when
+    Time cron "5 0/1 * 1/1 * ? *"
+then
+    logInfo("keephueliving","Keep compiled hue-living rules")
 end

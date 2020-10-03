@@ -34,12 +34,10 @@ rule "Bed scene"
 when
         Item BedScene received command
 then
- /*
         switch(receivedCommand) {
-                case 1 :  { sendCommand(BedLampC, 33)}
-                case 2 :  { sendCommand(BedLampC, 66)}
-                case 3 :  { sendCommand(BedLampC, 100)}
+                case 1 :  { sendCommand(LivingColorColor, "0,100,0") }
+                case 2 :  { sendCommand(LivingColorColor, "50,100,50") }
+                case 3 :  { sendCommand(LivingColorColor, "50,100,100")}
                 default : { sendCommand(BedLampC, OFF) }
         }
-	*/
 end

@@ -1,0 +1,14 @@
+rule "It becomes dark"
+when
+    Channel 'astro:sun:local:set#event' triggered START
+then
+    Hal.send(ON)
+    VoorDeurBrightness.send(ON)   
+end
+
+rule "It becomes dark"
+when
+    Channel 'astro:sun:local:rise#event' triggered END
+then
+    VoorDeurBrightness.send(OFF)   
+end

@@ -131,3 +131,10 @@ then
 		sendCommand(KeukenVoorScene,3)
 	}
 end
+rule "keep hue-kitchen rules  in memory"
+//use the compiled code in this rule file every minute
+when
+    Time cron "10 0/1 * 1/1 * ? *"
+then
+    logInfo("keephuekitchen","Keep compiled hue-kitchen rules")
+end

@@ -17,7 +17,7 @@ then
 			} else {
 				sendCommand(KeukenAchterScene, 1)
 			}
-
+			sendCommand(KeukenAchterZWScene,0.0)
 		}
 		case 5.1 : { /*Lang los */}
 		case 5.2 : { /*Lang vast*/
@@ -34,6 +34,7 @@ then
 			} else {
 				sendCommand(CeilingDimmer, 50)
 			}
+			sendCommand(KeukenAchterZWScene,0.0)
 		}
 		case 6.1 : { /*Lang los */}
 		case 6.2 : { /*Lang vast */
@@ -52,14 +53,15 @@ rule "Keuken Voor Schakelaar"
 when
         Item KeukenVoorZWScene changed
 then
-      
+	logDebug("keuken", "Detected state is: "+KeukenVoorZWScene.state)  
 	switch(KeukenVoorZWScene.state) {
 		case 1.0 : { /* LinksBoven Klik*/
 			if( KeukenMiddenScene.state > 0 ) {
 				sendCommand(KeukenMiddenScene, 0)
 			} else {
 				sendCommand(KeukenMiddenScene, 1)
-			}		
+			}
+			sendCommand(KeukenVoorZWScene,0.0)		
 		}
 		case 1.1 : { /*Lang los */}
 		case 1.2 : { /*Lang vast*/
@@ -67,7 +69,7 @@ then
 				sendCommand(KeukenMiddenScene, 2)
 			} else {
 				sendCommand(KeukenMiddenScene, 1)
-			}		
+			}
 		}
 		case 2.0 : { /* RechtsBoven Klik*/ 
 			if (KeukenVoorScene.state > 0) {
@@ -79,6 +81,7 @@ then
 				sendCommand(KeukenMiddenScene, 1)
 				sendCommand(KeukenVoorScene, 1)
 			}
+			sendCommand(KeukenVoorZWScene,0.0)
 		}
 		case 2.1 : { /*Lang los */}
 		case 2.2 : { /*Lang vast*/
@@ -99,7 +102,8 @@ then
 				sendCommand(KeukenVoorScene, 0)
 			} else {
 				sendCommand(KeukenVoorScene, 1)
-			}		
+			}
+			sendCommand(KeukenVoorZWScene,0.0)
 		}
 		case 5.1 : { /*Lang los */}
 		case 5.2 : { /*Lang vast*/
@@ -115,6 +119,7 @@ then
 			} else {
 				sendCommand(KeukenAchterScene, 1)
 			}
+			sendCommand(KeukenVoorZWScene,0.0)
 
 		}
 		case 6.1 : { /*Lang los */}
@@ -129,4 +134,12 @@ then
 		default : { }
         }
 
+end
+
+rule "keep keuken-zwave rules  in memory"
+//use the compiled code in this rule file every minute
+when
+    Time cron "15 0/1 * 1/1 * ? *"
+then
+    logInfo("keepkeukenzwave","Keep compiled keuken-zwave rules") 
 end

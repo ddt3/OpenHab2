@@ -25,8 +25,8 @@ then
 		else  {
 			sendCommand(GarageSim, 50)
 		}
-	if (piGarageStatus.state.toString == "UNDEFINED") {
+	if (piGarageStatus.state.toString == "UNKNOWN") {
 		sendCommand(GarageSim,50)
-	    sendNotification("dries.dokter@gmail.com", "Garage deur niet dicht?")
+	    sendNotification("dries.dokter@gmail.com", "Garage deur status ONBEKEND")
 	}
 end

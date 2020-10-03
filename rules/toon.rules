@@ -1,17 +1,18 @@
-// rule "Set point change"
-// when Item ToonTemperature changed 
-// then
-//     sendHttpGetRequest("http://toon.familie-dokter.lan/happ_thermstat?action=setSetpoint&Setpoint="+ ToonTemperature.state.toString)
-// end
+val HSBType color = new HSBType("0,100,100")
+var HSBType currentcolor
+rule "Warm water start use"
+when
+    Item RootedToonTapwater changed from OFF
+then
+    currentcolor=(KeukenStripMiddenC.state as HSBType)
+    KeukenStripMiddenC.send(color)
+    
+end
 
-// rule "Switch Program state"
-// when Item ToonProgramAan changed 
-// then
-//           sendHttpGetRequest("http://toon.familie-dokter.lan/happ_thermstat?action=changeSchemeState&state=" + ToonProgramAan.state.toString)           
-// end
-
-// rule "Switch state"
-// when Item ToonState changed
-// then
-//     sendHttpGetRequest("http://toon.familie-dokter.lan/happ_thermstat?action=changeSchemeState&state=2&temperatureState=" + ToonState.state.toString)    
-// end
+rule "Warm water start use"
+when
+    Item RootedToonTapwater changed from ON
+then
+   
+   KeukenStripMiddenC.send(currentcolor)    
+end

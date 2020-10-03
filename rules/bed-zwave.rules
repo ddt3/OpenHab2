@@ -12,12 +12,9 @@ then
                                 sendCommand(OverloopAchterScene, 1)
                         }
 		}
-		case 12 : { 
-		}
-		case 13 : { }
-		case 14 : { }
-		case 15 : { }
-		case 16 : { }
+		case 1.1 : { }
+		case 1.2 : { }
+
 		case 2.0 : { 
                         if( FrontHallSwitch.state == ON ) {
                                 sendCommand(FrontHallSwitch, OFF)
@@ -25,13 +22,8 @@ then
                                 sendCommand(FrontHallSwitch, ON)
                         }
                 }
-		case 22 : { 
-		}
-		case 23 : { 
-		}
-		case 24 : { }
-		case 25 : { }
-		case 26 : { }
+		case 2.1 : { }
+		case 2.2 : { }
 		case 5.0 : { 
 			if( BedScene.state > 0 ) {
 				sendCommand(BedScene, 0)
@@ -40,7 +32,7 @@ then
 			}
 
 		}
-		case 32 : { }
+		case 5.1 : { }
 		case 5.2 : { 
 			if( BedScene.state != 2 ) {
 				sendCommand(BedScene, 2)
@@ -49,9 +41,6 @@ then
 			}
 
 		}
-		case 34 : { }
-		case 35 : { }
-		case 36 : { }
 		case 6.0 : { 
 			if( BedScene.state > 0 ) {
 				sendCommand(BedScene, 0)
@@ -59,7 +48,7 @@ then
 				sendCommand(BedScene, 1)
 			}
 		}
-		case 42 : { }
+		case 6.1: { }
 		case 6.2 : { 
 			if( BedScene.state != 2 ) {
 				sendCommand(BedScene, 2)
@@ -67,9 +56,6 @@ then
 				sendCommand(BedScene, 1)
 			}
 		}
-		case 44 : { }
-		case 45 : { }
-		case 46 : { }
 		default : {  }
         }
 

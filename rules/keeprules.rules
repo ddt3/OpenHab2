@@ -1,0 +1,7 @@
+rule "keep this thing in memory"
+//use the compiled code in this rule file every minute
+when
+    Time cron "0 0/1 * 1/1 * ? *"
+then
+    logDebug("keeprules","cron execution to prevent gargabe collection of compiled rules")
+end
