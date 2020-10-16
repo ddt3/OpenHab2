@@ -1,0 +1,10 @@
+Switch   Mika              "Mika channel"              {channel="mqtt:topic:4cd22b36:Mika-Channel"}
+Switch   Hal               "Hal channel"               {channel="mqtt:topic:4cd22b36:halid"}
+Switch   Bel               "Bel channel"               {channel="mqtt:topic:4cd22b36:Bel-Channel"}
+Switch   BelKnop           "Bel knop channel"          {channel="mqtt:topic:4cd22b36:BelKnopChannel"}
+Number   LogTemperature    "Log temperature channel"   {channel="mqtt:topic:4cd22b36:LogTemperature-Channel"}
+Number   LogPressure       "Log pressure channel"      {channel="mqtt:topic:4cd22b36:LogPressure-Channel"}
+Number   LogHumidity       "Log humidity channel"      {channel="mqtt:topic:4cd22b36:LogHumidity-Channel"}
+Number   ShellyTemperature "Shelly temperature"        {channel="mqtt:topic:4cd22b36:Shelly-Temperature"}
+Number   ShellyHumidity    "Shelly humidity"           {channel="mqtt:topic:4cd22b36:ShellyHumidity"}
+Number   ShellyBattery     "Shelly battery"            {channel="mqtt:topic:4cd22b36:ShellyBattery"}

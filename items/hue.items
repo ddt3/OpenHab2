@@ -1,8 +1,9 @@
-Color KeukenStripAchterC "KeukenStripAchterC"
-Color KeukenStripMiddenC "KeukenStripMiddenC"
-Color KeukenStripVoorC "KeukenStripVoorC"
-Color TafelKamerC "TafelKamerC"
-Color TafelRaamC "TafelRaamC"
+Color KeukenStripAchterC "KeukenStripAchterC" {channel="hue:0210:00178823b965:16:color"}
+Color KeukenStripMiddenC "KeukenStripMiddenC" {channel="hue:0210:00178823b965:21:color"}
+Color KeukenStripVoorC "KeukenStripVoorC" {channel="hue:0210:00178823b965:20:color"}
+
+Color TafelKamerC "TafelKamerC" {channel="hue:0210:00178823b965:1:color"}
+Color TafelRaamC "TafelRaamC" {channel="hue:0210:00178823b965:2:color"}
 
 Switch   HueTableZoneSwitch             "Switch"              {channel="hue:group:00178823b965:11:switch"}
 Dimmer   HueTableZoneColorTemperature   "Color temperature"   {channel="hue:group:00178823b965:11:color_temperature"}
@@ -20,16 +21,27 @@ Color    LivingColorColor    "Color"        {channel="hue:0200:00178823b965:5:co
 String   LivingColorAlert    "Alert"        {channel="hue:0200:00178823b965:5:alert"}
 Switch   LivingColorEffect   "Color loop"   {channel="hue:0200:00178823b965:5:effect"}
 
-Color SchemerLampC "SchemerLampC"
-Color ZonneLampC "ZonneLampC"
-Color LightStripTVC "LightStripTVC"
+Color SchemerLampC "SchemerLampC" {channel="hue:0210:00178823b965:4:color"}
+Color ZonneLampC "ZonneLampC" {channel="hue:0100:00178823b965:6:brightness"}
+
+Color LightStripTVC "LightStripTVC" {channel="hue:0210:00178823b965:23:color"}
+
 Dimmer BedLampC "BedLampC"
-Dimmer TafelRaam_ColorTemperature "TafelRaamColorTemperature"
-Dimmer TafelKamer_ColorTemperature "TafelKamerColorTemperature"
-Dimmer Plafond_Computerkast_ColorTemperature "Plafond_Computerkast_ColorTemperature"
-Dimmer Plafond_Computerkast_Brightness "Plafond_Computerkast_Brightness"
-Dimmer Plafond_Kamer_ColorTemperature "Plafond_Kamer_ColorTemperature"
-Dimmer Plafond_Kamer_Brightness "Plafond_Kamer_Brightness"
+
+Dimmer TafelRaam_ColorTemperature "TafelRaamColorTemperature" {channel="hue:0210:00178823b965:2:color_temperature"}
+Dimmer TafelKamer_ColorTemperature "TafelKamerColorTemperature" {channel="hue:0210:00178823b965:1:color_temperature"}
+
+Dimmer Plafond_Computerkast_ColorTemperature "Plafond_Computerkast_ColorTemperature" {channel="hue:0220:00178823b965:31:color_temperature"}
+Dimmer Plafond_Computerkast_Brightness       "Plafond_Computerkast_Brightness"       {channel="hue:0220:00178823b965:31:brightness"}
+String PlafondComputerkastAlert              "Alert"                                 {channel="hue:0220:00178823b965:31:alert"}
+Switch PlafondComputerkastEffect             "Color loop"                            {channel="hue:0220:00178823b965:31:effect"}
+
+Dimmer Plafond_Kamer_ColorTemperature "Plafond_Kamer_ColorTemperature" {channel="hue:0220:00178823b965:25:color_temperature"}
+Dimmer Plafond_Kamer_Brightness       "Plafond_Kamer_Brightness"       {channel="hue:0220:00178823b965:25:brightness"}
+String PlafondKamerAlert              "Alert"                          {channel="hue:0220:00178823b965:25:alert"}
+Switch PlafondKamerEffect             "Color loop"                     {channel="hue:0220:00178823b965:25:effect"}
+
+
 Dimmer  VoorDeurBrightness   "Brightness"   {channel="hue:0100:00178823b965:22:brightness"}
 
 Color    OlifantBovenColor              "Color"               {channel="hue:0210:00178823b965:32:color"}
