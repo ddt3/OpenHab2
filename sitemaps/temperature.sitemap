@@ -11,8 +11,11 @@ sitemap temperature label="Temperatuur" {
         Default item=RootedToonPowerMeterReadingLow label="Energy, low rate"
     }
     Frame label="Klimaat"{
-          Text item=TemperatureBlackSensorsTemperature label="Kamer Temperatuur [%.1f °C]" icon="temperature"
-          Text item=TemperatureBlackSensorsHumidity    label="Luchtvochtigheid [%.1f ]" icon="humidity"
+        Text item=TemperatureBlackSensorsTemperature label="Kamer Temperatuur [%.1f °C]" icon="temperature"
+        Text item=TemperatureBlackSensorsHumidity    label="Luchtvochtigheid [%.1f ]" icon="humidity"
+
+        Text item=TemperatureWhiteSensorsTemperature label="Kamer Temperatuur [%.1f °C]" icon="temperature"
+        Text item=TemperatureWhiteSensorsHumidity    label="Luchtvochtigheid [%.1f ]" icon="humidity"
     }
 
   }

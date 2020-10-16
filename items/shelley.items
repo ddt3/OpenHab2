@@ -1,3 +1,4 @@
+//Temperature shelly Black
 Number                     TemperatureBlackDeviceWifiSignal        "Signal strength"         {channel="shelly:shellyht:58fcb6:device#wifiSignal"}
 Number:Time                TemperatureBlackDeviceUptime            "Uptime"                  {channel="shelly:shellyht:58fcb6:device#uptime"}
 Switch                     TemperatureBlackDeviceUpdateAvailable   "Update available"        {channel="shelly:shellyht:58fcb6:device#updateAvailable"}
@@ -8,6 +9,20 @@ Number:Dimensionless       TemperatureBlackBatteryBatteryLevel     "Battery batt
 Switch                     TemperatureBlackBatteryLowBattery       "Battery low battery"     {channel="shelly:shellyht:58fcb6:battery#lowBattery"}
 Number:ElectricPotential   TemperatureBlackBatteryVoltage          "Battery voltage"         {channel="shelly:shellyht:58fcb6:battery#voltage"}
 DateTime                   TemperatureBlackSensorsLastUpdate       "Sensors last update"     {channel="shelly:shellyht:58fcb6:sensors#lastUpdate"}
+
+//Temperature shelly Black
+Number                     TemperatureWhiteDeviceWifiSignal        "Signal strength"         {channel="shelly:shellyht:f058c0:device#wifiSignal"}
+Number:Time                TemperatureWhiteDeviceUptime            "Uptime"                  {channel="shelly:shellyht:f058c0:device#uptime"}
+Switch                     TemperatureWhiteDeviceUpdateAvailable   "Update available"        {channel="shelly:shellyht:f058c0:device#updateAvailable"}
+Number:Temperature         TemperatureWhiteSensorsTemperature      "Sensors temperature"     {channel="shelly:shellyht:f058c0:sensors#temperature"}
+Number:Dimensionless       TemperatureWhiteSensorsHumidity         "Sensors humidity"        {channel="shelly:shellyht:f058c0:sensors#humidity"}
+String                     TemperatureWhiteDeviceWakeupReason      "Device wakeup reason"    {channel="shelly:shellyht:f058c0:device#wakeupReason"}
+Number:Dimensionless       TemperatureWhiteBatteryBatteryLevel     "Battery battery level"   {channel="shelly:shellyht:f058c0:battery#batteryLevel"}
+Switch                     TemperatureWhiteBatteryLowBattery       "Battery low battery"     {channel="shelly:shellyht:f058c0:battery#lowBattery"}
+Number:ElectricPotential   TemperatureWhiteBatteryVoltage          "Battery voltage"         {channel="shelly:shellyht:f058c0:battery#voltage"}
+DateTime                   TemperatureWhiteSensorsLastUpdate       "Sensors last update"     {channel="shelly:shellyht:f058c0:sensors#lastUpdate"}
+String                     TemperatureWhiteDeviceDeviceName        "Device device name"      {channel="shelly:shellyht:f058c0:device#deviceName"}
+DateTime                   TemperatureWhiteDeviceHeartBeat         "Device heart beat"       {channel="shelly:shellyht:f058c0:device#heartBeat"}
 
 // Shelly 2.5
 Switch               3DPrinterRelay1Output              "Power1 (Printer)"                       {channel="shelly:shelly25-relay:e4cd32:relay1#output"}
