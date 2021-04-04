@@ -2,14 +2,15 @@ rule "Alles Uit"
 when
         Item AllOff received command ON
 then
+	//TEST
 	// create timeris - for a timecheck - 22.00 to 4:00.
-	var DateTime vanaftijd = new DateTime(now.getYear(), now.getMonthOfYear(), now.getDayOfMonth(), 22, 0, 0)
-	var DateTime totaantijd = vanaftijd.plusHours(6)
+	// var DateTime vanaftijd = new DateTime(now.getYear(), now.getMonthOfYear(), now.getDayOfMonth(), 22, 0, 0)
+	// var DateTime totaantijd = vanaftijd.plusHours(6)
 	
-	if(now.isBefore(totaantijd) && (now.isAfter(vanaftijd)))
-	{
-		 sendCommand(OverloopVoorScene, 1)
-	}
+	// if(now.isBefore(totaantijd) && (now.isAfter(vanaftijd)))
+	// {
+	// 	 sendCommand(OverloopVoorScene, 1)
+	// }
 	sendCommand(TafelScene, 0)
 	sendCommand(KamerScene, 0)
 	sendCommand(KeukenAchterScene, 0)

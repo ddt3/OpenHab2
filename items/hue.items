@@ -1,10 +1,3 @@
-Color KeukenStripAchterC "KeukenStripAchterC" {channel="hue:0210:00178823b965:16:color"}
-Color KeukenStripMiddenC "KeukenStripMiddenC" {channel="hue:0210:00178823b965:21:color"}
-Color KeukenStripVoorC "KeukenStripVoorC" {channel="hue:0210:00178823b965:20:color"}
-
-Color TafelKamerC "TafelKamerC" {channel="hue:0210:00178823b965:1:color"}
-Color TafelRaamC "TafelRaamC" {channel="hue:0210:00178823b965:2:color"}
-
 Switch   HueTableZoneSwitch             "Switch"              {channel="hue:group:00178823b965:11:switch"}
 Dimmer   HueTableZoneColorTemperature   "Color temperature"   {channel="hue:group:00178823b965:11:color_temperature"}
 Dimmer   HueTableZoneBrightness         "Brightness"          {channel="hue:group:00178823b965:11:brightness"}

@@ -1,0 +1,6 @@
+Group gHouse "House" <house> ["House"] 
+Group gDownstairs "Downstairs" <groundfloor> (gHouse) ["GroundFloor"]
+
+Group gUpstairs "Upstairs" <firstfloor> (gHouse) ["FirstFloor"]
+Group gHall "Hall" <corridor> (gDownstairs) ["Corridor"] 
+Group gGarden "Garden" <garden> ["Garden"]

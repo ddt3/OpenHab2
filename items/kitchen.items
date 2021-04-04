@@ -1,0 +1,22 @@
+Group gKitchen                  "Kitchen"               <kitchen>       (gDownstairs)  ["Kitchen"]
+
+Group gKeukenStripAchterC       "Keuken Strip Achter"   <lightstrip>    (gKitchen)              ["LightStripe"]
+Color KeukenStripAchterC        "KeukenStripAchterC"    <colorlight>    (gKeukenStripAchterC)   ["Light"]       {channel="hue:0210:00178823b965:16:color"}
+Color KeukenAchterColorSim	    "Back Kitchen Light"    <status>        (gKeukenStripAchterC)   ["Status"]      {ga="Light"}
+
+Group gKeukenStripMiddenC       "Keuken Strip Midden"   <lightstrip>    (gKitchen)              ["LightStripe"]
+Color KeukenStripMiddenC        "KeukenStripMiddenC"    <colorlight>    (gKeukenStripMiddenC)   ["Light"]       {channel="hue:0210:00178823b965:21:color"}
+Color KeukenMiddenColorSim	    "Middle Kitchen Light"   <colorlight>   (gKeukenStripMiddenC)   ["Status"]      {ga="Light"}
+
+
+Group gKeukenStripVoorC          "Keuken Strip Voor"    <lightstrip>    (gKitchen)              ["LightStripe"]
+Color KeukenStripVoorC          "KeukenStripVoorC"      <colorlight>    (gKeukenStripVoorC)     ["Light"]       {channel="hue:0210:00178823b965:20:color"}
+Color KeukenVoorColorSim    	"Front Kitchen Light"                   (gKeukenStripVoorC)     ["Status"]      {ga="Light"}
+
+Group gKeukenAchterZW           "Keuken Achter Knop"    <wallswitch>    (gKitchen)              ["WallSwitch"]
+Number KeukenAchterZWScene	    "KeukenAchterZWScene"   <wallswitch>    (gKeukenAchterZW)       ["Switch"]      {channel="zwave:device:12345678-9012-3456-7890-123456789012:node7:scene_number"}
+Number KeukenAchterZWBattery	"KeukenAchterZWBattery" <battery>       (gKeukenAchterZW)       ["Battery"]     {channel="zwave:device:12345678-9012-3456-7890-123456789012:node7:battery-level"}
+
+Group gKeukenVoorZW             "Keuken Voor Knop"      <wallswitch>    (gKitchen)              ["WallSwitch"]
+Number KeukenVoorZWScene	    "KeukenVoorZWScene"     <wallswitch>    (gKeukenVoorZW)         ["Switch"]      {channel="zwave:device:12345678-9012-3456-7890-123456789012:node12:scene_number"}
+Number KeukenVoorZWBattery	    "KeukenVoorZWBattery"   <battery>       (gKeukenVoorZW)         ["Battery"]     {channel="zwave:device:12345678-9012-3456-7890-123456789012:node12:battery-level"}

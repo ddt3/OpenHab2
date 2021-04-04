@@ -1,0 +1,6 @@
+Group gLivingRoom   "Living Room"   <livingroom>    (gDownstairs)   ["LivingRoom"]
+Group gTafel        "Tafel"         <colorlight>    (gLivingRoom)   ["Lightbulb"]
+
+Color TafelColorSim	"Table lights"  <table>         (gTafel)        ["Status"]      {ga="light"}
+Color TafelKamerC   "TafelKamerC"   <colorlight>    (gTafel)        ["Lightbulb"]   {channel="hue:0210:00178823b965:1:color"}
+Color TafelRaamC    "TafelRaamC"    <colorlight>    (gTafel)        ["Lightbulb"]   {channel="hue:0210:00178823b965:2:color"}

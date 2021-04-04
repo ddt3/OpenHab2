@@ -1,4 +1,4 @@
-Number     RootedToonTemperature               "Temperature"                       {channel="rootedtoon:toon:46b2bc81:Temperature"}
+Number     RootedToonTemperature               "Temperature"                     
 Number     RootedToonSetpoint                  "Setpoint"                          {channel="rootedtoon:toon:46b2bc81:Setpoint"}
 Number     RootedToonSetpointMode              "Setpoint mode"                     {channel="rootedtoon:toon:46b2bc81:SetpointMode"}
 Number     RootedToonGasMeterReading           "Gas"                               {channel="rootedtoon:toon:46b2bc81:GasMeterReading"}
@@ -22,3 +22,4 @@ Switch     RootedToonPreheat                   "Preheat"                        
 Number     RootedToonNextSetpoint              "Next setpoint"                     {channel="rootedtoon:toon:46b2bc81:NextSetpoint"}
 DateTime   RootedToonNextSetpointTime          "Next setpoint moment"              {channel="rootedtoon:toon:46b2bc81:NextSetpointTime"}
 Number     RootedToonBoilerSetpoint            "Boiler setpoint"                   {channel="rootedtoon:toon:46b2bc81:BoilerSetpoint"}
+Switch     DummySwitch                         "Onzin Switch"

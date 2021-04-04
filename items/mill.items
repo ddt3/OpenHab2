@@ -1,0 +1,20 @@
+Number:Temperature   MillDumasstraatVacationModeTargetTemperature   "Target temperature vacation"   {channel="millheat:home:be3624bd:202010171225480000:vacationModeTargetTemperature"}
+Switch               MillDumasstraatVacationMode                    "Vacation mode"                 {channel="millheat:home:be3624bd:202010171225480000:vacationMode"}
+Switch               MillDumasstraatVacationModeAdvanced            "Advanced vacation mode"        {channel="millheat:home:be3624bd:202010171225480000:vacationModeAdvanced"}
+DateTime             MillDumasstraatVacationModeStart               "Start of vacation"             {channel="millheat:home:be3624bd:202010171225480000:vacationModeStart"}
+DateTime             MillDumasstraatVacationModeEnd                 "End of vacation"               {channel="millheat:home:be3624bd:202010171225480000:vacationModeEnd"}
+
+Number:Temperature   Mill3DBrouwerijRoomCurrentTemperature   "Current temperature"         {channel="millheat:room:be3624bd:202010171225489984:currentTemperature"}
+Number:Temperature   Mill3DBrouwerijRoomTargetTemperature    "Target temperature"          {channel="millheat:room:be3624bd:202010171225489984:targetTemperature"}
+Number:Temperature   Mill3DBrouwerijRoomComfortTemperature   "Temperature comfort mode"    {channel="millheat:room:be3624bd:202010171225489984:comfortTemperature"}
+Number:Temperature   Mill3DBrouwerijRoomSleepTemperature     "Temperature sleep mode"      {channel="millheat:room:be3624bd:202010171225489984:sleepTemperature"}
+Number:Temperature   Mill3DBrouwerijRoomAwayTemperature      "Temperature away mode"       {channel="millheat:room:be3624bd:202010171225489984:awayTemperature"}
+Switch               Mill3DBrouwerijRoomHeatingActive        "Heating active"              {channel="millheat:room:be3624bd:202010171225489984:heatingActive"}
+String               Mill3DBrouwerijRoomCurrentMode          "Current room program mode"   {channel="millheat:room:be3624bd:202010171225489984:currentMode"}
+String               Mill3DBrouwerijRoomProgram              "Program"                     {channel="millheat:room:be3624bd:202010171225489984:program"}Number:Temperature   MillHeater600WCurrentTemperature   "Current temperature"   {channel="millheat:heater:be3624bd:180551:currentTemperature"}
+
+Switch               MillHeater600WHeatingActive        "Heating active"        {channel="millheat:heater:be3624bd:180551:heatingActive"}
+Switch               MillHeater600WFanActive            "Fan active"            {channel="millheat:heater:be3624bd:180551:fanActive"}
+Number:Power         MillHeater600WCurrentEnergy        "Energy usage"          {channel="millheat:heater:be3624bd:180551:currentEnergy"}
+Switch               MillHeater600WIndependent          "Independent heater"    {channel="millheat:heater:be3624bd:180551:independent"}
+Contact              MillHeater600WWindow               "Window state"          {channel="millheat:heater:be3624bd:180551:window"}

@@ -8,7 +8,8 @@ sitemap temperature label="Temperatuur" {
         Default item=RootedToonGasConsumption label="Gas"
         Default item=RootedToonGasMeterReading label="Gas"
         Text item=RootedToonPowerMeterReading
-        Default item=RootedToonPowerMeterReadingLow label="Energy, low rate"
+        Text item=RootedToonPowerMeterReadingLow label="Energy, low rate"
+        Default item=DummySwitch label="Onzin Switch"
     }
     Frame label="Klimaat"{
         Text item=TemperatureBlackSensorsTemperature label="Kamer Temperatuur [%.1f °C]" icon="temperature"

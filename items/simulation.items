@@ -1,10 +1,5 @@
 Color 	TestSim "Dummy Light" [Lighting]
-Color   TafelColorSim	"Table lights" <table> ["Lighting", "light"]
 Color   KamerColorSim	"Family lights" [Lighting]
-Color   KeukenAchterColorSim	"Back Kitchen Light" [Lighting]
-Color   KeukenMiddenColorSim	"Middle Kitchen Light" [Lighting]
-Color   KeukenVoorColorSim	"Front Kitchen Light" [Lighting]
-Switch   FrontHallSwitch "Corridor light" [Lighting]
+
 Dimmer  CeilingDimmer	"Ceiling light" [Lighting]
 
-Rollershutter GarageSim "Garage Door" [Blinds]

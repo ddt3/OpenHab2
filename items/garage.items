@@ -1,0 +1,3 @@
+Group gGarage "Garage" <garage> (gDownstairs) ["Garage"]
+Group gGarageDoor "Garage Door" <garagedoor>  (gGarage) ["GarageDoor"]
+Rollershutter GarageSim "Garage Door" <garagedoor> (gGarageDoor) ["Door"] {ga="Garage"}

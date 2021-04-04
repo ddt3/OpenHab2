@@ -74,7 +74,6 @@ then
 		case 1 :  { 
 			//Normaal
 			sendCommand(ZonneLampC, KamerCColor_S1_ZL)
-			sendCommand(SchemerLampC, KamerCColor_S1_SL)
 			sendCommand(LightStripTVC, KamerCColor_S1_TV)
 			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
 			sendCommand(TVKastLinks_ColorTemperature,100)
@@ -86,7 +85,6 @@ then
 		case 2 :  { 
 			//TV Kijken
 			sendCommand(ZonneLampC, KamerCColor_S2_ZL)
-			sendCommand(SchemerLampC, KamerCColor_S2_SL)
 			sendCommand(LightStripTVC, KamerCColor_S2_TV)
 			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
 			sendCommand(TVKastLinks_ColorTemperature,100)
@@ -97,14 +95,12 @@ then
 		}
 		case 3 :  { 
 			sendCommand(ZonneLampC, CustomKamerColorSim)
-			sendCommand(SchemerLampC, CustomKamerColorSim)
 			sendCommand(LightStripTVC, CustomKamerColorSim)
 			sendCommand(OlifantBovenColor, CustomKamerColorSim)
 		}
 		default : {
 			// Off
 			sendCommand(ZonneLampC, OFF)
-			sendCommand(SchemerLampC, OFF)
 			sendCommand(LightStripTVC, OFF)
 			sendCommand(OlifantBovenColor, OFF)			
 			sendCommand(TVKastLinks_Brightness,OFF)
@@ -137,19 +133,19 @@ end
 
 
 
-rule "Tafel lamp uit aan"
-when
-        Item SchemerLampC received update
-then
-        if (SchemerLampC == "81,56,100" ) {
-		switch(KamerScene) {
-			case 1 :  { sendCommand(KamerScene, 1) }
-			case 2 :  { sendCommand(KamerScene, 2) }
-			default : { sendCommand(KamerScene, 0) }
-			}
-	}
+// rule "Tafel lamp uit aan"
+// when
+//         Item SchemerLampC received update
+// then
+//         if (SchemerLampC == "81,56,100" ) {
+// 		switch(KamerScene) {
+// 			case 1 :  { sendCommand(KamerScene, 1) }
+// 			case 2 :  { sendCommand(KamerScene, 2) }
+// 			default : { sendCommand(KamerScene, 0) }
+// 			}
+// 	}
 
-end
+// end
 
 // TV Lichten
 rule "TV Kast Lichten"
