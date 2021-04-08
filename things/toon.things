@@ -1,6 +1,0 @@
-Thing http:url:toon_thermostat "Toon Thermostaat" [ 
-	baseURL="http://toon.familie-dokter.lan", 
-	refresh=15] {
-		Channels:
-			Type string : text "Text" [ stateExtension="/happ_thermstat?action=getThermostatInfo" ]
-}
