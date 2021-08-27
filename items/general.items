@@ -1,7 +1,9 @@
 Switch  AllOff  "Alles uit"
 Number BelMode "Bel Modus"
+
 Switch DriesOnderweg "Dries"
 Switch MobielDries "Mobiel Dries"
-Group GroupAlert
-String HubActivity
+Group GroupAlert 
+String HubActivity "Current activity" {channel="harmonyhub:hub:DrHubLiving:currentActivity"}
+
 String BelAlert

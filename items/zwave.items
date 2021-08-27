@@ -1,11 +1,10 @@
-Number TafelZWScene	            "TafelZWScene"  
-Number KeukenAchterZWScene	    "KeukenAchterZWScene"   
-Number KeukenVoorZWScene	    "KeukenVoorZWScene"     
-Number BedZWScene	            "BedZWScene"            {expire="1s, 0.0"}
-Number OverloopZWScene	        "OverloopZWScene"       {expire="1s, 0.0"}
-Number TafelZWBattery	        "TafelZWBattery"
-Number KeukenAchterZWBattery	"KeukenAchterZWBattery"
-Number KeukenVoorZWBattery	    "KeukenVoorZWBattery"
-Number OverloopZWBattery	    "OverloopZWBattery"
-Number BedZWBattery	            "BedZWBattery"
+Number TafelZWScene	            "TafelZWScene"  {channel="zwave:device:b35202cafa:node6:scene_number"}
+
+Number BedZWScene	            "BedZWScene"            {expire="1s, 0.0", channel="zwave:device:b35202cafa:node8:scene_number"}
+Number OverloopZWScene	        "OverloopZWScene"       {expire="1s, 0.0", channel="zwave:device:b35202cafa:node11:scene_number"}
+ 
+Number TafelZWBattery	        "TafelZWBattery" {channel="zwave:device:b35202cafa:node6:battery-level"}
+
+Number OverloopZWBattery	    "OverloopZWBattery" {channel="zwave:device:b35202cafa:node11:battery-level"}
+Number BedZWBattery	            "BedZWBattery" {channel="zwave:device:b35202cafa:node8:battery-level"}
 

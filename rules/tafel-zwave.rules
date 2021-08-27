@@ -49,9 +49,6 @@ then
 			sendCommand(AllOff, ON)
 			sendCommand(TafelZWScene,0.0)
 		}
-		case 24 : { }
-		case 25 : { }
-		case 26 : { }
 		case 5.0 : { 
 			if( TafelScene.state > 0 ) {
 				sendCommand(TafelScene, 0)
@@ -72,17 +69,14 @@ then
 				sendCommand(TafelScene, 1)
 			}
 		}
-		case 34 : { }
-		case 35 : { }
-		case 36 : { }
 		case 6.0 : { 
 		        if( KamerScene.state > 0 ) {
 				sendCommand(KamerScene, 0)
 			} else {
 				sendCommand(KamerScene, 1)
 			}
+			sendCommand(TafelZWScene,0.0)
 		}
-		case 42 : { }
 		case 6.2 : { 
 			if( KamerScene.state != 2 ) {
 				sendCommand(KamerScene, 2)
@@ -90,9 +84,6 @@ then
 				sendCommand(KamerScene, 1)
 			}
 		}
-		case 44 : { }
-		case 45 : { }
-		case 46 : { }
 		default : {  }
         }
 end

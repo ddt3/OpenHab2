@@ -1,0 +1,12 @@
+sitemap toon label="Toon" {
+    Frame label="Temperature"  {
+        Setpoint item=ToonThermostaatCurrentSetpoint label="SetPoint Temp:[%.1f]" minValue=15 maxValue=25 step=0.5
+        Text item=ToonThermostaatCurrentTemp label="Huidige Temperature [%.1f]"
+        Selection item=ToonThermostaatProgramState label="State" mappings=[0="Comfort", 1="Thuis", 2="Slapen", 3="Weg"]
+    }
+    Frame  label="experimental" {
+        Default item=HABApp1
+        Slider item=Blind_3D
+    }
+    
+}

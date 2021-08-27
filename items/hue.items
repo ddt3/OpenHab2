@@ -1,14 +1,10 @@
-Color KeukenStripAchterC "KeukenStripAchterC"
-Color KeukenStripMiddenC "KeukenStripMiddenC"
-Color KeukenStripVoorC "KeukenStripVoorC"
-Color TafelKamerC "TafelKamerC"
-Color TafelRaamC "TafelRaamC"
-
 Switch   HueTableZoneSwitch             "Switch"              {channel="hue:group:00178823b965:11:switch"}
 Dimmer   HueTableZoneColorTemperature   "Color temperature"   {channel="hue:group:00178823b965:11:color_temperature"}
 Dimmer   HueTableZoneBrightness         "Brightness"          {channel="hue:group:00178823b965:11:brightness"}
 Color    HueTableZoneColor              "Color"               {channel="hue:group:00178823b965:11:color"}
 String   HueTableZoneAlert              "Alert"               {channel="hue:group:00178823b965:11:alert"}
+String   HueTableZoneScene         "Scene"               {channel="hue:group:00178823b965:11:scene"}
+
 
 Switch   HueKitchenZoneSwitch             "Switch"              {channel="hue:group:00178823b965:9:switch"}
 Dimmer   HueKitchenZoneColorTemperature   "Color temperature"   {channel="hue:group:00178823b965:9:color_temperature"}
@@ -20,17 +16,39 @@ Color    LivingColorColor    "Color"        {channel="hue:0200:00178823b965:5:co
 String   LivingColorAlert    "Alert"        {channel="hue:0200:00178823b965:5:alert"}
 Switch   LivingColorEffect   "Color loop"   {channel="hue:0200:00178823b965:5:effect"}
 
-Color SchemerLampC "SchemerLampC"
-Color ZonneLampC "ZonneLampC"
-Color LightStripTVC "LightStripTVC"
+Color SchemerLampC "SchemerLampC" {channel="hue:0210:00178823b965:4:color"}
+Color ZonneLampC "ZonneLampC" {channel="hue:0100:00178823b965:34:brightness"}
+
+Color LightStripTVC "LightStripTVC" {channel="hue:0210:00178823b965:23:color"}
+
 Dimmer BedLampC "BedLampC"
-Dimmer TafelRaam_ColorTemperature "TafelRaamColorTemperature"
-Dimmer TafelKamer_ColorTemperature "TafelKamerColorTemperature"
-Dimmer Plafond_Computerkast_ColorTemperature "Plafond_Computerkast_ColorTemperature"
-Dimmer Plafond_Computerkast_Brightness "Plafond_Computerkast_Brightness"
-Dimmer Plafond_Kamer_ColorTemperature "Plafond_Kamer_ColorTemperature"
-Dimmer Plafond_Kamer_Brightness "Plafond_Kamer_Brightness"
+
+Dimmer TafelRaam_ColorTemperature "TafelRaamColorTemperature" {channel="hue:0210:00178823b965:2:color_temperature"}
+
+Dimmer TafelKamer_ColorTemperature "TafelKamerColorTemperature" {channel="hue:0210:00178823b965:1:color_temperature"}
+
+Dimmer Plafond_Computerkast_ColorTemperature "Plafond_Computerkast_ColorTemperature" {channel="hue:0220:00178823b965:31:color_temperature"}
+Dimmer Plafond_Computerkast_Brightness       "Plafond_Computerkast_Brightness"       {channel="hue:0220:00178823b965:31:brightness"}
+String PlafondComputerkastAlert              "Alert"                                 {channel="hue:0220:00178823b965:31:alert"}
+Switch PlafondComputerkastEffect             "Color loop"                            {channel="hue:0220:00178823b965:31:effect"}
+
+Dimmer Plafond_Kamer_ColorTemperature "Plafond_Kamer_ColorTemperature" {channel="hue:0220:00178823b965:25:color_temperature"}
+Dimmer Plafond_Kamer_Brightness       "Plafond_Kamer_Brightness"       {channel="hue:0220:00178823b965:25:brightness"}
+String PlafondKamerAlert              "Alert"                          {channel="hue:0220:00178823b965:25:alert"}
+Switch PlafondKamerEffect             "Color loop"                     {channel="hue:0220:00178823b965:25:effect"}
+
+
 Dimmer  VoorDeurBrightness   "Brightness"   {channel="hue:0100:00178823b965:22:brightness"}
 
 Color    OlifantBovenColor              "Color"               {channel="hue:0210:00178823b965:32:color"}
 Dimmer   OlifantBovenColorTemperature   "Color temperature"   {channel="hue:0210:00178823b965:32:color_temperature"}
+
+Dimmer   TVKastLinks_ColorTemperature   "Color temperature"   {channel="hue:0220:00178823b965:28:color_temperature"}
+Dimmer   TVKastLinks_Brightness         "Brightness"          {channel="hue:0220:00178823b965:28:brightness"}
+String   TVKastLinks_Alert              "Alert"               {channel="hue:0220:00178823b965:28:alert"}
+Switch   TVKastLinks_Effect             "Color loop"          {channel="hue:0220:00178823b965:28:effect"}
+
+Dimmer   TVKastRechts_ColorTemperature   "Color temperature"   {channel="hue:0220:00178823b965:27:color_temperature"}
+Dimmer   TVKastRechts_Brightness         "Brightness"          {channel="hue:0220:00178823b965:27:brightness"}
+String   TVKastRechts_Alert              "Alert"               {channel="hue:0220:00178823b965:27:alert"}
+Switch   TVKastRechts_Effect             "Color loop"          {channel="hue:0220:00178823b965:27:effect"}

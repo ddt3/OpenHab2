@@ -1,0 +1,23 @@
+Switch    BeastWol    "Switch on beast"
+
+Number   3DBrouwerijRoomCurrentTemperature   "Current temperature"         {channel="millheat:room:e2a1466f3f:202010171225489984:currentTemperature"}
+Number   3DBrouwerijRoomTargetTemperature    "Target temperature"          {channel="millheat:room:e2a1466f3f:202010171225489984:targetTemperature"}
+Number   3DBrouwerijRoomComfortTemperature   "Temperature comfort mode"    {channel="millheat:room:e2a1466f3f:202010171225489984:comfortTemperature"}
+Number   3DBrouwerijRoomSleepTemperature     "Temperature sleep mode"      {channel="millheat:room:e2a1466f3f:202010171225489984:sleepTemperature"}
+Number   3DBrouwerijRoomAwayTemperature      "Temperature away mode"       {channel="millheat:room:e2a1466f3f:202010171225489984:awayTemperature"}
+Switch   3DBrouwerijRoomHeatingActive        "Heating active"              {channel="millheat:room:e2a1466f3f:202010171225489984:heatingActive"}
+String   3DBrouwerijRoomCurrentMode          "Current room program mode"   {channel="millheat:room:e2a1466f3f:202010171225489984:currentMode"}
+String   3DBrouwerijRoomProgram              "Program"                     {channel="millheat:room:e2a1466f3f:202010171225489984:program"}
+
+Number   3DBrouwerijCurrentTemperature   "Current temperature"   {channel="millheat:heater:e2a1466f3f:180551:currentTemperature"}
+Switch   3DBrouwerijHeatingActive        "Heating active"        {channel="millheat:heater:e2a1466f3f:180551:heatingActive"}
+Switch   3DBrouwerijFanActive            "Fan active"            {channel="millheat:heater:e2a1466f3f:180551:fanActive"}
+Number   3DBrouwerijCurrentEnergy        "Energy usage"          {channel="millheat:heater:e2a1466f3f:180551:currentEnergy"}
+Switch   3DBrouwerijIndependent          "Independent heater"    {channel="millheat:heater:e2a1466f3f:180551:independent"}
+Contact  3DBrouwerijWindow               "Window state"          {channel="millheat:heater:e2a1466f3f:180551:window"}
+
+Number   DumasstraatVacationModeTargetTemperature   "Target temperature vacation"   {channel="millheat:home:e2a1466f3f:202010171225480000:vacationModeTargetTemperature"}
+Switch   DumasstraatVacationMode                    "Vacation mode"                 {channel="millheat:home:e2a1466f3f:202010171225480000:vacationMode"}
+Switch   DumasstraatVacationModeAdvanced            "Advanced vacation mode"        {channel="millheat:home:e2a1466f3f:202010171225480000:vacationModeAdvanced"}
+DateTime DumasstraatVacationModeStart               "Start of vacation"             {channel="millheat:home:e2a1466f3f:202010171225480000:vacationModeStart"}
+DateTime DumasstraatVacationModeEnd                 "End of vacation"               {channel="millheat:home:e2a1466f3f:202010171225480000:vacationModeEnd"}

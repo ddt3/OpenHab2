@@ -6,7 +6,7 @@ sitemap default label="Thuis"
                 Switch item=KeukenVoorScene label="AanrechtV" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
                 Switch item=KeukenMiddenScene label="AanrechtM" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
                 Switch item=KeukenAchterScene label="AanrechtA" icon="kitchen" mappings=[0="0", 1="[N]", 2="[F]", 3="[C]" ]
-                Switch item=Hal mappings=[OFF="Uit          ", ON="          Aan"]
+                Switch item=Hal label="Hal" mappings=[OFF="Uit          ", ON="          Aan"]
                 Switch item=BelMode label="Bel" icon="bell" mappings=[ 0="[ B ]", 1="[  L  ]", 2="[B+L]" ]
                 Switch item=AllOff
         }

@@ -2,20 +2,18 @@ rule "React on Zone channels input (RXV685MainZoneZoneChannelsInput) change/upda
 when
     Item RXV685MainZoneZoneChannelsInput changed to "Spotify"
 then
-    logInfo("YAMAHA", "Spotify is gekozen!!")
     if(HubActivity.state != "Spotify") {
-		sendCommand(HubActivity,"Spotify")
-	}
+                sendCommand(HubActivity,"Spotify")
+        }
 end
 
 rule "React on Power (RXV685MainZoneZoneChannelsPower) change/update"
 when
     Item RXV685MainZoneZoneChannelsPower changed from OFF to ON
 then
-    logInfo("YAMAHA", "Versterker ging aan!")
     if(RXV685MainZoneZoneChannelsInput.state == "Spotify") {
         if(HubActivity.state != "Spotify") {
-    		sendCommand(HubActivity,"Spotify")
-	    }
+                sendCommand(HubActivity,"Spotify")
+            }
     }
 end

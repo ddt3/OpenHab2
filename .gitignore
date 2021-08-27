@@ -6,3 +6,4 @@ services/voicerss.cfg
 services/mqtt.cfg
 services/weather.cfg
 services/xbmc.cfg
+services/influxdb.cfg

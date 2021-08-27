@@ -1,0 +1,25 @@
+sitemap 3dprintbrouwerij label="3dprintbrouwerij" {  
+    
+    Frame label="Licht"{
+        Colorpicker item=SchemerLampC
+        Switch item=SchemerLampC
+    }
+    Frame label="3D Printer" {
+        Switch item=3DPrinterRelay1Output
+        Switch item=3DPrinterRelay2Output
+            Text item=3DPrinterMeter1CurrentWatts label="Printer verbruik [%s]" {
+                Text item=3DPrinterMeter1TotalKWH
+                Text item=3DPrinterMeter2TotalKWH
+                Text item=3DPrinterMeter2CurrentWatts}
+        }
+    Frame label="Verwarming"{
+        Text item=Mill3DBrouwerijRoomCurrentTemperature
+        Slider item=Mill3DBrouwerijRoomTargetTemperature minValue=15 maxValue=22 step=1
+    }
+    Frame label="Beast"{
+        Switch item=BeastWol
+    }
+
+
+  }
+  

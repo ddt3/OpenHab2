@@ -1,0 +1,5 @@
+Group            gGarage        "Garage"         <garage>        (gDownstairs)    ["Garage"]
+Group            gGarageDoor    "Garage Door"    <garagedoor>    (gGarage)        ["GarageDoor"]
+Rollershutter    GarageSim      "Garage Door"    <garagedoor>    (gGarageDoor)    ["Door"]          {ga="Garage"}
+Switch   piGarage   "Garage pi relais channel"   {channel="mqtt:topic:MQTT-Garage-Thing:GaragePiRelaisChannel"}
+String   piGarageStatus   "Pi garage status channel"   {channel="mqtt:topic:MQTT-Garage-Thing:piGarageStatusChannel"}

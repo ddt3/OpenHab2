@@ -1,4 +1,4 @@
-DateTime LGDriesAlarmClock "Alarm Clock [%s]" <time> 
-String LGDriesCallState "Call State [%s]" <soundvolume>
-String LGDriesWifiName  "Wi-Fi Name [%s]" <network>
-String LGDriesChargingState "Charging State [%s]" <poweroutlet_eu>
+DateTime OnePlusDriesAlarmClock "Alarm Clock [%s]" <time> 
+String OnePlusDriesCallState "Call State [%s]" <soundvolume>
+String OnePlusDriesWifiName  "Wi-Fi Name [%s]" <network>
+String OnePlusDriesChargingState "Charging State [%s]" <poweroutlet_eu>

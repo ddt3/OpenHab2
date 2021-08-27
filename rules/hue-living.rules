@@ -1,6 +1,7 @@
 
 var String CustomTafelColorSim = "120,20,20"
 var String CustomKamerColorSim = "120,20,20"
+
 //Kamer scene 1 kleuren
 var String KamerCColor_S1_ZL = "0,0,100"
 var String KamerCColor_S1_SL = "35,100,50"
@@ -26,12 +27,12 @@ then
     logDebug("tafel", "TafelScene received command")
     switch(receivedCommand) {
         case 1 :  {
-			sendCommand(HueTableZoneColor,TafelCColor_S1)
-			logDebug("tafel", "sendCommand(HueTableZoneColor,TafelCColor_S1)")
+			sendCommand(HueTableZoneScene, "IsfiLGqaT4X7sCs")
+			logDebug("tafel", "sendCommand(HueTableZoneScene, IsfiLGqaT4X7sCs)")
 		}
         case 2 :  {
-			sendCommand(HueTableZoneColor,TafelCColor_S2)
-			logDebug("tafel", "sendCommand(HueTableZoneColor,TafelCColor_S2)")
+			sendCommand(HueTableZoneScene, "srQXRJyUSNPmoxs")
+			logDebug("tafel", "sendCommand(HueTableZoneScene, srQXRJyUSNPmoxs)")
 		}  
         case 3 :  {
 			sendCommand(HueTableZoneColor,CustomTafelColorSim)
@@ -74,7 +75,6 @@ then
 		case 1 :  { 
 			//Normaal
 			sendCommand(ZonneLampC, KamerCColor_S1_ZL)
-			sendCommand(SchemerLampC, KamerCColor_S1_SL)
 			sendCommand(LightStripTVC, KamerCColor_S1_TV)
 			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
 			sendCommand(TVKastLinks_ColorTemperature,100)
@@ -86,7 +86,6 @@ then
 		case 2 :  { 
 			//TV Kijken
 			sendCommand(ZonneLampC, KamerCColor_S2_ZL)
-			sendCommand(SchemerLampC, KamerCColor_S2_SL)
 			sendCommand(LightStripTVC, KamerCColor_S2_TV)
 			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
 			sendCommand(TVKastLinks_ColorTemperature,100)
@@ -97,14 +96,12 @@ then
 		}
 		case 3 :  { 
 			sendCommand(ZonneLampC, CustomKamerColorSim)
-			sendCommand(SchemerLampC, CustomKamerColorSim)
 			sendCommand(LightStripTVC, CustomKamerColorSim)
 			sendCommand(OlifantBovenColor, CustomKamerColorSim)
 		}
 		default : {
 			// Off
 			sendCommand(ZonneLampC, OFF)
-			sendCommand(SchemerLampC, OFF)
 			sendCommand(LightStripTVC, OFF)
 			sendCommand(OlifantBovenColor, OFF)			
 			sendCommand(TVKastLinks_Brightness,OFF)
@@ -137,19 +134,19 @@ end
 
 
 
-rule "Tafel lamp uit aan"
-when
-        Item SchemerLampC received update
-then
-        if (SchemerLampC == "81,56,100" ) {
-		switch(KamerScene) {
-			case 1 :  { sendCommand(KamerScene, 1) }
-			case 2 :  { sendCommand(KamerScene, 2) }
-			default : { sendCommand(KamerScene, 0) }
-			}
-	}
+// rule "Tafel lamp uit aan"
+// when
+//         Item SchemerLampC received update
+// then
+//         if (SchemerLampC == "81,56,100" ) {
+// 		switch(KamerScene) {
+// 			case 1 :  { sendCommand(KamerScene, 1) }
+// 			case 2 :  { sendCommand(KamerScene, 2) }
+// 			default : { sendCommand(KamerScene, 0) }
+// 			}
+// 	}
 
-end
+// end
 
 // TV Lichten
 rule "TV Kast Lichten"

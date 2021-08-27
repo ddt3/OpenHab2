@@ -1,0 +1,13 @@
+rule "WakeUp Beast"
+when
+    Item BeastWol received command ON
+then
+    val actions = getActions("network", "network:pingdevice:192_168_3_50")
+        if (actions === null) {
+        logInfo("actions", "Actions not found, check thing ID")
+        return
+        } else {
+            actions.sendWakeOnLanPacket()
+        }
+end
+
