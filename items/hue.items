@@ -52,3 +52,5 @@ Dimmer   TVKastRechts_ColorTemperature   "Color temperature"   {channel="hue:022
 Dimmer   TVKastRechts_Brightness         "Brightness"          {channel="hue:0220:00178823b965:27:brightness"}
 String   TVKastRechts_Alert              "Alert"               {channel="hue:0220:00178823b965:27:alert"}
 Switch   TVKastRechts_Effect             "Color loop"          {channel="hue:0220:00178823b965:27:effect"}
+
+Color    OverloopAchterC                 "Brightness"          {channel="hue:0100:00178823b965:14:brightness"}

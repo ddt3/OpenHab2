@@ -1,4 +1,6 @@
-Switch    BeastWol    "Switch on beast"
+Switch   BeastWol                            "Switch on beast"             {channel="network:pingdevice:network-beast:online"}
+Switch   BeastWinWol                         "Online"                      {channel="network:pingdevice:network-win-beast:online"}
+
 
 Number   3DBrouwerijRoomCurrentTemperature   "Current temperature"         {channel="millheat:room:e2a1466f3f:202010171225489984:currentTemperature"}
 Number   3DBrouwerijRoomTargetTemperature    "Target temperature"          {channel="millheat:room:e2a1466f3f:202010171225489984:targetTemperature"}
