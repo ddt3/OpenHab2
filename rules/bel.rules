@@ -5,10 +5,10 @@ then
     switch(BelMode.state) {
 	case 1 : {
 	    sendNotification("dries.dokter@gmail.com", "Iemand drukte de bel")
-	    sendCommand(BelAlert, "LSELECT")
+	    sendCommand(GroupAlert, "LSELECT")
 	}
 	case 2 : {
-	    sendCommand(BelAlert, "LSELECT")
+	    sendCommand(GroupAlert, "LSELECT")
 	    sendNotification("dries.dokter@gmail.com", "Iemand drukte de bel")
 	    sendCommand(BelKnop, OFF)
 	    sendCommand(Bel, OFF)
