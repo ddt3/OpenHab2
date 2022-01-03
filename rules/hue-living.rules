@@ -2,15 +2,17 @@
 var String CustomTafelColorSim = "120,20,20"
 var String CustomKamerColorSim = "120,20,20"
 
-//Kamer scene 1 kleuren
+//Kamer scene 1 
 var String KamerCColor_S1_ZL = "0,0,100"
-var String KamerCColor_S1_SL = "35,100,50"
-var String KamerCColor_S1_TV = "35,100,35"
+var String KamerCColor_S1_Strips = "35,100,35"
+var Number TVKast_S1_ColorTemperature = 100
+var Number TVKast_S1_Brightness = 20
 
-//Kamer scene 2 kleuren
+//Kamer scene 2 
 var String KamerCColor_S2_ZL = "0,0,100"
-var String KamerCColor_S2_SL = "OFF"
-var String KamerCColor_S2_TV = "35,100,35"
+var String KamerCColor_S2_Strips = "35,100,55"
+var Number TVKast_S2_ColorTemperature = 100
+var Number TVKast_S2_Brightness = 40
 
 //
 //Tafel scene 1 kleuren
@@ -75,23 +77,23 @@ then
 		case 1 :  { 
 			//Normaal
 			sendCommand(ZonneLampC, KamerCColor_S1_ZL)
-			sendCommand(LightStripTVC, KamerCColor_S1_TV)
-			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
-			sendCommand(TVKastLinks_ColorTemperature,100)
-			sendCommand(TVKastRechts_ColorTemperature,100)
-			sendCommand(TVKastLinks_Brightness,20)
-			sendCommand(TVKastRechts_Brightness,20)
+			sendCommand(LightStripTVC, KamerCColor_S1_Strips)
+			sendCommand(OlifantBovenColor, KamerCColor_S1_Strips)
+			sendCommand(TVKastLinks_ColorTemperature,TVKast_S1_ColorTemperature)
+			sendCommand(TVKastRechts_ColorTemperature,TVKast_S1_ColorTemperature)
+			sendCommand(TVKastLinks_Brightness,TVKast_S1_Brightness)
+			sendCommand(TVKastRechts_Brightness,TVKast_S1_Brightness)
 			sendCommand(ZoutLampRelayOutput,ON)
 		}
 		case 2 :  { 
-			//TV Kijken
+			//Fel
 			sendCommand(ZonneLampC, KamerCColor_S2_ZL)
-			sendCommand(LightStripTVC, KamerCColor_S2_TV)
-			sendCommand(OlifantBovenColor, KamerCColor_S1_TV)
-			sendCommand(TVKastLinks_ColorTemperature,100)
-			sendCommand(TVKastRechts_ColorTemperature,100)
-			sendCommand(TVKastLinks_Brightness,20)
-			sendCommand(TVKastRechts_Brightness,20)
+			sendCommand(LightStripTVC, KamerCColor_S2_Strips)
+			sendCommand(OlifantBovenColor, KamerCColor_S2_Strips)
+			sendCommand(TVKastLinks_ColorTemperature,TVKast_S2_ColorTemperature)
+			sendCommand(TVKastRechts_ColorTemperature,TVKast_S2_ColorTemperature)
+			sendCommand(TVKastLinks_Brightness,TVKast_S2_Brightness)
+			sendCommand(TVKastRechts_Brightness,TVKast_S2_Brightness)
 			sendCommand(ZoutLampRelayOutput,ON)
 		}
 		case 3 :  { 
@@ -117,11 +119,11 @@ when
 	Item KamerColorSim received command
 then 
 var String IncomingColor = receivedCommand.toString
-	if (IncomingColor == "60,100,100" || IncomingColor == KamerCColor_S1_SL) {
-		postUpdate(KamerColorSim, KamerCColor_S1_SL) 
+	if (IncomingColor == "60,100,100" || IncomingColor == KamerCColor_S1_Strips) {
+		postUpdate(KamerColorSim, KamerCColor_S1_Strips) 
 		sendCommand(KamerScene,1)
 	} else if (IncomingColor == "240,100,100" ) {
-		postUpdate(KamerColorSim, KamerCColor_S2_SL)
+		postUpdate(KamerColorSim, KamerCColor_S2_Strips)
 		sendCommand(KamerScene,2)
 	} else if (receivedCommand == OFF ) {
 		sendCommand(KamerScene,0)
@@ -166,4 +168,24 @@ when
     Time cron "5 0/1 * 1/1 * ? *"
 then
     logInfo("keephueliving","Keep compiled hue-living rules")
+end
+
+rule "Kamer dimmer "
+when
+        Item KamerDimmerDimmerSwitch changed
+then
+	switch(KamerDimmerDimmerSwitch.state) {
+		case 1002.0 :  {
+			sendCommand(TafelScene,1)
+		 }
+		case 2002.0 :  {
+			sendCommand(TafelScene,2)
+		 }
+		case 3002.0 :  {
+			sendCommand(TafelScene,1)
+		 }
+		case 4002.0 :  {
+			sendCommand(TafelScene,0)
+		 }
+	}
 end

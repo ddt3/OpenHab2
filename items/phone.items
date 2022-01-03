@@ -2,3 +2,5 @@ DateTime OnePlusDriesAlarmClock "Alarm Clock [%s]" <time>
 String OnePlusDriesCallState "Call State [%s]" <soundvolume>
 String OnePlusDriesWifiName  "Wi-Fi Name [%s]" <network>
 String OnePlusDriesChargingState "Charging State [%s]" <poweroutlet_eu>
+String OnePlusDriesDndMode "Do not disturb State [%s]" <poweroutlet_eu>
+Number OnePlusDriesBatteryLevel "Battery Level [%s]" <battery>

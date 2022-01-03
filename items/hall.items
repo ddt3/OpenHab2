@@ -1,3 +1,4 @@
+Group gHall             "Hal"               <entry>      (gDownstairs)   ["Entry"]
 Group gHallLight        "Hall Light"        <light>      (gHall)         ["Lightbulb"]
-Switch Hal              "Hal channel"       <light>      (gHallLight)    ["Switch"]  {channel="mqtt:topic:e47150d206:generic-mqtt-thing:HalChannel", ga="Light", synonyms="Hall Lights"}
-Switch FrontHallSwitch  "Corridor light"    <wallswitch> (gHall)         ["Switch"]  {channel="zwave:device:b35202cafa:node15:switch_binary", ga="Light"}
+Switch Hal              "Hal Licht"       <light>      (gHallLight)    ["Switch"]  {channel="mqtt:topic:e47150d206:generic-mqtt-thing:HalChannel", ga="Light", synonyms="Hall Lights"}
+Switch FrontHallSwitch  "Overloop licht"    <wallswitch> (gHall)         ["Switch"]  {channel="zwave:device:b35202cafa:node15:switch_binary", ga="Light"}

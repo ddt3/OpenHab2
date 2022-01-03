@@ -11,3 +11,16 @@ then
         }
 end
 
+rule "WakeUp Valheim"
+when
+    Item NetworkPingampfamiliedokternet_Online received command ON
+then
+    executeCommandLine("/exec/bin/amp-start.sh")
+end
+
+rule "Sleep Valheim"
+when
+    Item NetworkPingampfamiliedokternet_Online received command OFF
+then
+    executeCommandLine("/exec/bin/amp-stop.sh")
+end

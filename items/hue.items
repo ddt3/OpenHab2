@@ -3,7 +3,7 @@ Dimmer   HueTableZoneColorTemperature   "Color temperature"   {channel="hue:grou
 Dimmer   HueTableZoneBrightness         "Brightness"          {channel="hue:group:00178823b965:11:brightness"}
 Color    HueTableZoneColor              "Color"               {channel="hue:group:00178823b965:11:color"}
 String   HueTableZoneAlert              "Alert"               {channel="hue:group:00178823b965:11:alert"}
-String   HueTableZoneScene         "Scene"               {channel="hue:group:00178823b965:11:scene"}
+String   HueTableZoneScene              "Scene"               {channel="hue:group:00178823b965:11:scene"}
 
 
 Switch   HueKitchenZoneSwitch             "Switch"              {channel="hue:group:00178823b965:9:switch"}
@@ -22,10 +22,6 @@ Color ZonneLampC "ZonneLampC" {channel="hue:0100:00178823b965:34:brightness"}
 Color LightStripTVC "LightStripTVC" {channel="hue:0210:00178823b965:23:color"}
 
 Dimmer BedLampC "BedLampC"
-
-Dimmer TafelRaam_ColorTemperature "TafelRaamColorTemperature" {channel="hue:0210:00178823b965:2:color_temperature"}
-
-Dimmer TafelKamer_ColorTemperature "TafelKamerColorTemperature" {channel="hue:0210:00178823b965:1:color_temperature"}
 
 Dimmer Plafond_Computerkast_ColorTemperature "Plafond_Computerkast_ColorTemperature" {channel="hue:0220:00178823b965:31:color_temperature"}
 Dimmer Plafond_Computerkast_Brightness       "Plafond_Computerkast_Brightness"       {channel="hue:0220:00178823b965:31:brightness"}

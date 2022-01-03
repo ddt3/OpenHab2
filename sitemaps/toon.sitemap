@@ -4,9 +4,11 @@ sitemap toon label="Toon" {
         Text item=ToonThermostaatCurrentTemp label="Huidige Temperature [%.1f]"
         Selection item=ToonThermostaatProgramState label="State" mappings=[0="Comfort", 1="Thuis", 2="Slapen", 3="Weg"]
     }
-    Frame  label="experimental" {
-        Default item=HABApp1
-        Slider item=Blind_3D
+    Frame  label="AirPurify" {
+        Default item=PhilipsAirPurifierLivingRoomAC382910ControlsMode label="Mode"
+        Default item=PhilipsAirPurifierLivingRoomAC382910SensorsIaql label="Iaql"
+        Default item=PhilipsAirPurifierLivingRoomAC382910SensorsPm25 label="Pm2.5"
+        Default item=PhilipsAirPurifierLivingRoomAC382910SensorsErr label="Error message"
     }
     
 }

@@ -13,13 +13,16 @@ sitemap 3dprintbrouwerij label="3dprintbrouwerij" {
                 Text item=3DPrinterMeter2CurrentWatts}
         }
     Frame label="Verwarming"{
-        Text item=Mill3DBrouwerijRoomCurrentTemperature
-        Slider item=Mill3DBrouwerijRoomTargetTemperature minValue=15 maxValue=22 step=1
+        Text item=3DBrouwerijRoomCurrentTemperature
     }
-    Frame label="Beast"{
+    Frame label="Computers"{
         Switch item=BeastWol
+        Switch item=NetworkPingampfamiliedokternet_Online
+        Text item=NetworkPingampfamiliedokternet_LastSeen label="[%1$tH:%1$tM:%1$tS, %1$td.%1$tm.%1$tY]"
     }
 
 
   }
+
+
   

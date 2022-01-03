@@ -7,11 +7,14 @@ Group GroupAlert
 String HubActivity "Current activity" {channel="harmonyhub:hub:DrHubLiving:currentActivity"}
 
 // Lights that will flash when the doorbell is pressed:
-String TafekKamerAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:1:alert"} 
+String TafelKamerAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:1:alert"} 
 String TafelRaamAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:2:alert"}
+String TafelStripAlert "Alert" {channel="hue:0210:00178823b965:38:alert"}
+
 String KeukenMiddenAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:21:alert"}
 String KeukenStripAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:16:alert"}
 String KeukebVoorAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:20:alert"}
+
 String OlifantBovenAlert "Alert" (GroupAlert) {channel="hue:0210:00178823b965:32:alert"}
 String PlafondComputerKastAlert "Alert" (GroupAlert) {channel="hue:0220:00178823b965:31:alert"}
 String PlafondKamerAlert "Alert" (GroupAlert) {channel="hue:0220:00178823b965:25:alert"}

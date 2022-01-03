@@ -3,16 +3,16 @@ Group gKitchen                  "Kitchen"               <kitchen>       (gDownst
 Group gKeukenStripAchterC       "Keuken Strip Achter"   <lightstrip>    (gKitchen)              ["LightStripe"]
 Color KeukenStripAchterC        "KeukenStripAchterC"    <colorlight>    (gKeukenStripAchterC)   ["Light"]       {channel="hue:0210:00178823b965:16:color"}
 
-Color KeukenAchterColorSim	    "Back Kitchen Light"    <status>        (gKeukenStripAchterC)   ["Status"]      {ga="Light"}
+Color KeukenAchterColorSim	    "Keuken Licht Achter"    <colorlight>    (gKeukenStripAchterC)   ["Status"]      {synonyms="Keuken achter", ga="Light"}
 
 Group gKeukenStripMiddenC       "Keuken Strip Midden"   <lightstrip>    (gKitchen)              ["LightStripe"]
 Color KeukenStripMiddenC        "KeukenStripMiddenC"    <colorlight>    (gKeukenStripMiddenC)   ["Light"]       {channel="hue:0210:00178823b965:21:color"}
-Color KeukenMiddenColorSim	    "Middle Kitchen Light"   <colorlight>   (gKeukenStripMiddenC)   ["Status"]      {ga="Light"}
+Color KeukenMiddenColorSim	    "Keuken Licht Midden"   <colorlight>   (gKeukenStripMiddenC)   ["Status"]      {synonyms="Keuken midden", ga="Light"}
 
 
 Group gKeukenStripVoorC          "Keuken Strip Voor"    <lightstrip>    (gKitchen)              ["LightStripe"]
 Color KeukenStripVoorC          "KeukenStripVoorC"      <colorlight>    (gKeukenStripVoorC)     ["Light"]       {channel="hue:0210:00178823b965:20:color"}
-Color KeukenVoorColorSim    	"Front Kitchen Light"                   (gKeukenStripVoorC)     ["Status"]      {ga="Light"}
+Color KeukenVoorColorSim    	"Keuken licht voor"   <colorlight>        (gKeukenStripVoorC)     ["Status"]      {synonyms="Aanrecht", ga="Light"}
 
 Group gKeukenAchterZW           "Keuken Achter Knop"    <wallswitch>    (gKitchen)              ["WallSwitch"]
 Number KeukenAchterZWScene	    "KeukenAchterZWScene"   <wallswitch>    (gKeukenAchterZW)       ["Switch"]      {channel="zwave:device:b35202cafa:node7:scene_number"}

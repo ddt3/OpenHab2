@@ -1,6 +1,39 @@
-Group gLivingRoom   "Living Room"   <livingroom>    (gDownstairs)   ["LivingRoom"]
-Group gTafel        "Tafel"         <colorlight>    (gLivingRoom)   ["Lightbulb"]
+Group gWoonKamer   "Woonkamer"   <LivingRoom>    (gDownstairs)   ["LivingRoom"]
+Group gTafel        "Tafel"         <colorlight>    (gWoonKamer)   ["Lightbulb"]
 
-Color TafelColorSim	"Table lights"  <table>         (gTafel)        ["Status"]      {ga="light"}
+Color TafelColorSim	"Tafel Lampen"  <table>         (gTafel)        ["Status"]      {ga="light"}
 Color TafelKamerC   "TafelKamerC"   <colorlight>    (gTafel)        ["Lightbulb"]   {channel="hue:0210:00178823b965:1:color"}
 Color TafelRaamC    "TafelRaamC"    <colorlight>    (gTafel)        ["Lightbulb"]   {channel="hue:0210:00178823b965:2:color"}
+Dimmer TafelRaam_ColorTemperature "TafelRaamColorTemperature" {channel="hue:0210:00178823b965:2:color_temperature"}
+Dimmer TafelKamer_ColorTemperature "TafelKamerColorTemperature" {channel="hue:0210:00178823b965:1:color_temperature"}
+
+
+Color    TafelStripColor                 "Color"               {channel="hue:0210:00178823b965:38:color"}
+Dimmer   TafelStrip_ColorTemperature      "Color temperature"   {channel="hue:0210:00178823b965:38:color_temperature"}
+Number   TafelStrip_ColorTemperatureAbs   "Color temperature"   {channel="hue:0210:00178823b965:38:color_temperature_abs"}
+
+
+Color   KamerColorSim	"Familie Licht" <couch>         (gWoonkamer)        ["Status"]      {ga="light"}
+Dimmer  CeilingDimmer	"Ceiling light" [Lighting]
+
+Switch           PhilipsAirPurifierLivingRoomAC382910ControlsPwr      "Power"             {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls#pwr"}
+String           PhilipsAirPurifierLivingRoomAC382910ControlsOm       "Fan speed"         {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls#om"}
+String           PhilipsAirPurifierLivingRoomAC382910ControlsMode     "Mode"              {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls#mode"}
+Number           PhilipsAirPurifierLivingRoomAC382910ControlsDt       "Timer"             {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls#dt"}
+Number:Time      PhilipsAirPurifierLivingRoomAC382910ControlsDtrs     "Timer left"        {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls#dtrs"}
+Switch           PhilipsAirPurifierLivingRoomAC382910ControlsCl       "Child lock"        {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls#cl"}
+Switch           PhilipsAirPurifierLivingRoomAC382910ControlsUiUil    "Buttons"           {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls-ui#uil"}
+Number           PhilipsAirPurifierLivingRoomAC382910ControlsUiAqil   "Led light level"   {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls-ui#aqil"}
+String           PhilipsAirPurifierLivingRoomAC382910ControlsUiDdp    "Displayed index"   {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:controls-ui#ddp"}
+Number:Density   PhilipsAirPurifierLivingRoomAC382910SensorsPm25      "Pm2.5"             {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:sensors#pm25"}
+Number           PhilipsAirPurifierLivingRoomAC382910SensorsIaql      "Iaql"              {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:sensors#iaql"}
+Number           PhilipsAirPurifierLivingRoomAC382910SensorsAqit      "Aqit"              {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:sensors#aqit"}
+String           PhilipsAirPurifierLivingRoomAC382910SensorsErr       "Error message"     {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:sensors#err"}
+Number           PhilipsAirPurifierLivingRoomAC382910FiltersFltsts0   "Pre filter"        {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:filters#fltsts0"}
+Number           PhilipsAirPurifierLivingRoomAC382910FiltersFltsts1   "Hepa filter"       {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:filters#fltsts1"}
+Number           PhilipsAirPurifierLivingRoomAC382910FiltersFltsts2   "Carbon"            {channel="philipsair:coap:27437ff005b511eb958296d952b567a6:filters#fltsts2"}
+
+Number     KamerDimmerDimmerSwitch   "Dimmer switch state"   {channel="hue:0820:00178823b965:7:dimmer_switch"}
+DateTime   KamerDimmerLastUpdated    "Last updated"          {channel="hue:0820:00178823b965:7:last_updated"}
+Number     KamerDimmerBatteryLevel   "Battery level"         {channel="hue:0820:00178823b965:7:battery_level"}
+Switch     KamerDimmerBatteryLow     "Low battery"           {channel="hue:0820:00178823b965:7:battery_low"}
